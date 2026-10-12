@@ -3,16 +3,20 @@
 window.SITE_CONFIG = {
   "slug": "eg2004",
   "topicIds": [
-    "u1"
+    "u1",
+    "u2"
   ],
   "navOrder": [
-    "u1"
+    "u1",
+    "u2"
   ],
   "topicColors": {
-    "u1": "#3b82e8"
+    "u1": "#3b82e8",
+    "u2": "#8855f5"
   },
   "topicLabels": {
-    "u1": "Data & Descriptive Statistics"
+    "u1": "Data & Descriptive Statistics",
+    "u2": "Probability Distributions"
   }
 };
 window.SITE_CONTENT = {
@@ -26,15 +30,15 @@ window.SITE_CONTENT = {
         "label": "Units built"
       },
       {
-        "value": "50+",
+        "value": "65+",
         "label": "Terms"
       },
       {
-        "value": "8",
+        "value": "11",
         "label": "Formulas"
       },
       {
-        "value": "12",
+        "value": "18",
         "label": "Exam Traps"
       }
     ],
@@ -435,12 +439,500 @@ window.SITE_CONTENT = {
       "color": "#3b82e8"
     },
     {
-      "soon": true,
-      "numLabel": "Unit 2",
-      "title": "Modelling Random Behaviour",
-      "desc": "Coming soon — added once covered in lectures.",
-      "color": "#8855f5",
-      "sections": []
+      "id": "u2",
+      "numLabel": "Unit 2 of 5",
+      "title": "Modelling Random Behaviour: Probability Distributions",
+      "subtitle": "Engineers rarely predict one outcome; they model how outcomes vary. This part of Unit 2 covers the standard distribution families, how to read a PDF versus a CDF, and how to pick the right model for a physical situation.",
+      "sections": [
+        {
+          "type": "toc",
+          "title": "In this unit",
+          "items": [
+            {
+              "href": "#u2-pdfcdf",
+              "label": "PDF vs CDF"
+            },
+            {
+              "href": "#u2-binomial",
+              "label": "Binomial distribution"
+            },
+            {
+              "href": "#u2-uniform",
+              "label": "Uniform distribution"
+            },
+            {
+              "href": "#u2-poisson",
+              "label": "Poisson distribution"
+            },
+            {
+              "href": "#u2-exponential",
+              "label": "Exponential distribution"
+            },
+            {
+              "href": "#u2-normal",
+              "label": "Normal distribution"
+            },
+            {
+              "href": "#u2-weibull",
+              "label": "Weibull distribution"
+            },
+            {
+              "href": "#u2-choose",
+              "label": "Which distribution?"
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "id": "u2-pdfcdf",
+          "text": "PDF vs CDF: Two Ways to Describe the Same Randomness"
+        },
+        {
+          "type": "p",
+          "text": "A steel supplier quotes a pin diameter of 4.18 mm, but no two pins are identical. A probability distribution is the model that says how likely each diameter is. Every common distribution comes with two functions, and confusing them is the most common early mistake.",
+          "class": "learn-only"
+        },
+        {
+          "type": "conceptbox",
+          "variant": "note",
+          "html": "<ul>\n<li><strong>PDF (probability density function) f(x):</strong> for continuous variables, the height of the curve. It is <em>not</em> a probability itself; area under it is. For discrete variables the equivalent is the <strong>probability mass function</strong> p(x) = P(X = x).</li>\n<li><strong>CDF (cumulative distribution function) F(x):</strong> the probability of getting a value <em>at or below</em> x, so F(x) = P(X ≤ x). It always climbs from 0 to 1.</li>\n<li>The PDF is the derivative of the CDF, and the CDF is the running total (area) of the PDF.</li>\n</ul>",
+          "title": "The two functions"
+        },
+        {
+          "type": "p",
+          "text": "Each family has <strong>population parameters</strong> (n and p, λ, a and b, μ and σ) that fix its exact shape. Choosing the model means picking the family that matches the physical situation, then plugging in the parameters.",
+          "class": ""
+        },
+        {
+          "type": "h2",
+          "id": "u2-binomial",
+          "text": "Binomial Distribution"
+        },
+        {
+          "type": "p",
+          "text": "Think of testing a batch of 6 patients on a new blood pressure drug, or a box of 7 computer chips that either pass or fail. The binomial counts <strong>successes in a fixed number of independent yes/no trials</strong>, each with the same success probability.",
+          "class": "learn-only"
+        },
+        {
+          "type": "formulablock",
+          "name": "Binomial: X ~ Bin(n, p)",
+          "eqs": [
+            "P(X=x) = \\frac{n!}{(n-x)!\\,x!}\\,p^{x}(1-p)^{n-x} \\qquad x = 0, 1, \\ldots, n",
+            "\\text{mean} = np \\qquad \\text{variance} = np(1-p)"
+          ],
+          "vars": [
+            {
+              "symbol": "n",
+              "desc": "number of trials"
+            },
+            {
+              "symbol": "p",
+              "desc": "probability of success on each trial"
+            },
+            {
+              "symbol": "x",
+              "desc": "number of successes"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "label": "Worked example: at least one responder",
+          "q": "A blood pressure drug has a 25% success rate. Six participants are treated. What is the probability that at least one responds?",
+          "steps": [
+            "X ~ Bin(6, 0.25)",
+            "Use the complement: P(X ≥ 1) = 1 − P(X = 0)",
+            "P(X = 0) = (0.75)<sup>6</sup> = 0.1780"
+          ],
+          "answer": "P(X ≥ 1) = 1 − 0.1780 = 0.8220"
+        },
+        {
+          "type": "conceptbox",
+          "variant": "",
+          "html": "<p>Any \"at least one\" question is almost always <strong>1 − P(none)</strong>. It turns a long sum into one term. Note the lecture slide writes the last exponent as 6 − 1; the correct exponent is n − x = 6 − 0 = 6. The final answer is unaffected.</p>",
+          "title": "Exam shortcut: the complement"
+        },
+        {
+          "type": "example",
+          "label": "Worked example: mean and variance",
+          "q": "n = 4 trials, p = 0.25.",
+          "steps": [
+            "Mean = np = 4 × 0.25 = 1",
+            "Variance = np(1 − p) = 4 × 0.25 × 0.75 = 0.75",
+            "Full distribution: P(0) = 0.3164, P(1) = 0.4219, P(2) = 0.2109, P(3) = 0.0469, P(4) = 0.0039"
+          ],
+          "answer": "The CDF values accumulate to F(0) = 0.3164, F(1) = 0.7383, F(2) = 0.9492, F(3) = 0.9961, F(4) = 1"
+        },
+        {
+          "type": "p",
+          "text": "In MATLAB, <code>binopdf(x,n,p)</code> gives P(X = x) and <code>binocdf(x,n,p)</code> gives P(X ≤ x). Try changing p between 0.25 and 0.5 and watch the bars move: at p = 0.5 the shape becomes symmetric.",
+          "class": ""
+        },
+        {
+          "type": "h2",
+          "id": "u2-uniform",
+          "text": "Uniform Distribution"
+        },
+        {
+          "type": "p",
+          "text": "A random number generator, or a machined part whose size lands anywhere inside its tolerance band with no preference, behaves uniformly: every value between a and b is equally likely.",
+          "class": "learn-only"
+        },
+        {
+          "type": "formulablock",
+          "name": "Uniform: X ~ U(a, b)",
+          "eqs": [
+            "f(x) = \\frac{1}{b-a} \\qquad F(x) = \\frac{x-a}{b-a} \\qquad a \\le x \\le b",
+            "\\text{mean} = \\frac{a+b}{2} \\qquad \\text{variance} = \\frac{(b-a)^2}{12}"
+          ],
+          "vars": [
+            {
+              "symbol": "a, b",
+              "desc": "lower and upper limits"
+            },
+            {
+              "symbol": "f(x)",
+              "desc": "constant height, so the PDF is a flat rectangle of area 1"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "label": "Worked example: metal pin diameter",
+          "q": "A pin has diameter X ~ U(4.182, 4.185) mm. What is the probability it fits a hole of diameter 4.184 mm?",
+          "steps": [
+            "Mean = (4.182 + 4.185)/2 = 4.1835 mm",
+            "Standard deviation = (4.185 − 4.182)/√12 = 0.00087 mm",
+            "P(X ≤ 4.184) = F(4.184) = (4.184 − 4.182)/(4.185 − 4.182) = 0.002/0.003"
+          ],
+          "answer": "P = 0.6667"
+        },
+        {
+          "type": "p",
+          "text": "MATLAB: <code>unifpdf(x,a,b)</code> and <code>unifcdf(x,a,b)</code>.",
+          "class": ""
+        },
+        {
+          "type": "h2",
+          "id": "u2-poisson",
+          "text": "Poisson Distribution"
+        },
+        {
+          "type": "p",
+          "text": "The Poisson counts <strong>how many events happen inside a fixed window</strong> of time or space when events occur randomly and independently: cracks along a girder, blisters per battery plate, pump failures in a power plant over ten years, or datasets a model trains per day.",
+          "class": "learn-only"
+        },
+        {
+          "type": "formulablock",
+          "name": "Poisson: X ~ P(λ)",
+          "eqs": [
+            "p(x) = \\frac{\\lambda^{x}}{x!}\\,e^{-\\lambda} \\qquad F(x) = e^{-\\lambda}\\sum_{i=0}^{x}\\frac{\\lambda^{i}}{i!}",
+            "\\text{mean} = \\lambda \\qquad \\text{variance} = \\lambda"
+          ],
+          "vars": [
+            {
+              "symbol": "λ",
+              "desc": "average number of events per interval (the window must be stated)"
+            }
+          ]
+        },
+        {
+          "type": "conceptbox",
+          "variant": "note",
+          "html": "<p>Mean and variance are <strong>equal</strong>, both λ. So the standard deviation is √λ. A question asking for the spread of a count that arrives at a given rate (e.g. 7 patients per hour) is a Poisson question with σ = √7 ≈ 2.65.</p>",
+          "title": "Poisson fingerprint"
+        },
+        {
+          "type": "example",
+          "label": "Worked example: hairline fractures in steel girders",
+          "q": "Girders are 10 m long and average 5 randomly spaced fractures each, so X ~ P(5).",
+          "steps": [
+            "P(X ≤ 3) = e<sup>−5</sup>(1 + 5 + 12.5 + 20.83) = 0.2650",
+            "P(X = 2) = 5<sup>2</sup>e<sup>−5</sup>/2! = 0.0842",
+            "P(X ≥ 3) = 1 − P(X ≤ 2) = 1 − 0.1247"
+          ],
+          "answer": "P(X ≥ 3) = 0.8753"
+        },
+        {
+          "type": "conceptbox",
+          "variant": "",
+          "html": "<p>\"At least 3\" means 3 <em>or more</em>, so the complement is <strong>X ≤ 2</strong>, not X ≤ 3. Using F(3) here is the classic off-by-one error.</p>",
+          "title": "Trap: the inequality"
+        },
+        {
+          "type": "h2",
+          "id": "u2-exponential",
+          "text": "Exponential Distribution"
+        },
+        {
+          "type": "p",
+          "text": "If the Poisson counts events, the exponential measures the <strong>gap between them</strong>: the time between goals in a match, the wait for a pint at a busy bar, the length of a help-centre call, or the distance between cracks along a girder.",
+          "class": "learn-only"
+        },
+        {
+          "type": "formulablock",
+          "name": "Exponential: X ~ Exp(λ)",
+          "eqs": [
+            "f(x) = \\lambda e^{-\\lambda x} \\qquad F(x) = 1 - e^{-\\lambda x}",
+            "\\text{mean} = \\frac{1}{\\lambda} \\qquad \\text{variance} = \\frac{1}{\\lambda^{2}}"
+          ],
+          "vars": [
+            {
+              "symbol": "λ",
+              "desc": "rate; λ = 1 / (mean gap)"
+            },
+            {
+              "symbol": "x",
+              "desc": "time or distance between successive events"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "A larger mean gap means the CDF takes longer to approach 1. Mean and standard deviation are equal for an exponential (both 1/λ).",
+          "class": ""
+        },
+        {
+          "type": "example",
+          "label": "Worked example: gaps between fractures",
+          "q": "The same 10 m girders have on average 6 gaps between fractures. What is the probability a gap is 0.8 m or less?",
+          "steps": [
+            "Mean gap μ = 10/6 = 1.67 m",
+            "λ = 1/μ = 0.6",
+            "F(0.8) = 1 − e<sup>−0.6 × 0.8</sup> = 1 − e<sup>−0.48</sup>"
+          ],
+          "answer": "P(X ≤ 0.8) = 0.3812"
+        },
+        {
+          "type": "conceptbox",
+          "variant": "note",
+          "html": "<p>The lecture treats 5 fractures on a 10 m girder as 6 gaps (counting the two end pieces). Strictly, 5 fractures create only 4 gaps between them. Use the lecture's convention (6) to match the worked answer, but know why it is chosen.</p>",
+          "title": "Where the number of gaps comes from"
+        },
+        {
+          "type": "h2",
+          "id": "u2-normal",
+          "text": "Normal Distribution"
+        },
+        {
+          "type": "p",
+          "text": "Measure the mass of a thousand concrete blocks, the height of a thousand people, or the average of many noisy readings, and the histogram settles into a symmetric bell. It is the workhorse model for physical measurements and, later in this module, for hypothesis testing on averages.",
+          "class": "learn-only"
+        },
+        {
+          "type": "formulablock",
+          "name": "Normal: X ~ N(μ, σ)",
+          "eqs": [
+            "f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\exp\\!\\left[-\\frac{1}{2}\\left(\\frac{x-\\mu}{\\sigma}\\right)^{2}\\right]",
+            "Z = \\frac{X-\\mu}{\\sigma} \\sim N(0,1)"
+          ],
+          "vars": [
+            {
+              "symbol": "μ",
+              "desc": "mean (centre of the bell)"
+            },
+            {
+              "symbol": "σ",
+              "desc": "standard deviation (width)"
+            },
+            {
+              "symbol": "Z",
+              "desc": "standard normal variable, mean 0 and standard deviation 1"
+            }
+          ]
+        },
+        {
+          "type": "conceptbox",
+          "variant": "note",
+          "html": "<ul>\n<li>About <strong>68%</strong> of values lie within μ ± σ</li>\n<li>About <strong>95%</strong> within μ ± 2σ</li>\n<li>About <strong>99.7%</strong> within μ ± 3σ</li>\n</ul><p>The curve is symmetric about the mean, so P(Z ≤ −z) = 1 − P(Z ≤ z).</p>",
+          "title": "The 68-95-99.7 rule"
+        },
+        {
+          "type": "p",
+          "text": "The normal CDF has no closed form, so probabilities come from the <strong>standard normal table</strong> (or software). The method is always the same: <strong>standardise, then look up</strong>.",
+          "class": ""
+        },
+        {
+          "type": "example",
+          "label": "Worked example: concrete block weights",
+          "q": "Block weights are X ~ N(11, 0.3) kg. What percentage weigh 10.5 kg or less?",
+          "steps": [
+            "Standardise: Z = (10.5 − 11)/0.3 = −1.67",
+            "Look up F(−1.67) in the negative z table (row −1.6, column .07)"
+          ],
+          "answer": "P(X ≤ 10.5) = 0.0475, so 4.75% of blocks weigh 10.5 kg or less"
+        },
+        {
+          "type": "example",
+          "label": "Worked example: a range",
+          "q": "What percentage of the same blocks weigh between 10.5 kg and 11.5 kg?",
+          "steps": [
+            "Z₁ = (10.5 − 11)/0.3 = −1.67 and Z₂ = (11.5 − 11)/0.3 = +1.67",
+            "P = F(1.67) − F(−1.67) = 0.9525 − 0.0475"
+          ],
+          "answer": "P(10.5 ≤ X ≤ 11.5) = 0.9050, so 90.5% of blocks"
+        },
+        {
+          "type": "conceptbox",
+          "variant": "",
+          "html": "<p>The lecture slide states \"4.57%\" for the first answer. The table value 0.0475 means <strong>4.75%</strong>.</p>",
+          "title": "Slide typo to ignore"
+        },
+        {
+          "type": "conceptbox",
+          "variant": "note",
+          "html": "<p>The lecture flags Benoit Mandelbrot's warning: financial returns show wild swings that the normal curve badly underestimates. Building risk estimates on a normal assumption contributed to the 2008 financial crisis. A model is only as good as the match between its assumptions and reality.</p>",
+          "title": "A caution about the normal"
+        },
+        {
+          "type": "h2",
+          "id": "u2-weibull",
+          "text": "Weibull Distribution"
+        },
+        {
+          "type": "p",
+          "text": "When a boiler component wears out, a brake pad reaches end of life, or a river produces its worst flood in a century, the Weibull is the usual choice for modelling lifetimes and extremes. Its shape changes with its parameters, which is what makes it so flexible.",
+          "class": "learn-only"
+        },
+        {
+          "type": "formulablock",
+          "name": "Weibull: X ~ W(λ, β)",
+          "eqs": [
+            "f(x) = \\lambda\\beta\\,x^{\\beta-1}e^{-\\lambda x^{\\beta}}"
+          ],
+          "vars": [
+            {
+              "symbol": "λ",
+              "desc": "scale parameter"
+            },
+            {
+              "symbol": "β",
+              "desc": "shape parameter; β = 1 gives the exponential distribution"
+            }
+          ]
+        },
+        {
+          "type": "cardgrid",
+          "cards": [
+            {
+              "title": "Time",
+              "color": "#8855f5",
+              "text": "Lifetime of boiler components in a power plant."
+            },
+            {
+              "title": "Space",
+              "color": "#8855f5",
+              "text": "Miles driven before brake pads wear out."
+            },
+            {
+              "title": "Amount",
+              "color": "#8855f5",
+              "text": "The maximum flood expected in 100 years."
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "id": "u2-choose",
+          "text": "Which Distribution? A Decision Guide"
+        },
+        {
+          "type": "p",
+          "text": "Most exam marks hinge on picking the right family. Ask what the random variable <em>is</em>:",
+          "class": ""
+        },
+        {
+          "type": "cardgrid",
+          "cards": [
+            {
+              "title": "Binomial: Bin(n, p)",
+              "color": "#8855f5",
+              "text": "Number of successes in n independent trials, each with the same probability p."
+            },
+            {
+              "title": "Uniform: U(a, b)",
+              "color": "#8855f5",
+              "text": "A continuous value where everything between a and b is equally likely."
+            },
+            {
+              "title": "Poisson: P(λ)",
+              "color": "#8855f5",
+              "text": "Count of events in a fixed window of time or space; λ is the average count."
+            },
+            {
+              "title": "Exponential: Exp(λ)",
+              "color": "#8855f5",
+              "text": "Time or distance between events of a Poisson process; mean gap = 1/λ."
+            },
+            {
+              "title": "Normal: N(μ, σ)",
+              "color": "#8855f5",
+              "text": "Symmetric bell-shaped physical measurements and averages."
+            },
+            {
+              "title": "Weibull: W(λ, β)",
+              "color": "#8855f5",
+              "text": "Lifetimes and extreme events; reduces to exponential when β = 1."
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "label": "Practice: datasets per day",
+          "q": "A deep learning model classifying SEM images of rock formations trains on average 3 datasets per day. Which distribution models the chance it trains on exactly 5 tomorrow?",
+          "steps": [
+            "It is a count within a fixed window (one day), so Poisson with λ = 3",
+            "P(X = 5) = 3<sup>5</sup>e<sup>−3</sup>/5!"
+          ],
+          "answer": "X ~ P(3), P(X = 5) = 0.1008"
+        },
+        {
+          "type": "example",
+          "label": "Practice: rare cell in a flow cytometer",
+          "q": "The average time between detections of a rare cell type is 1.2 ms. Which distribution models the time to the next detection?",
+          "steps": [
+            "It is a gap between events, so exponential",
+            "λ = 1/1.2 = 0.833"
+          ],
+          "answer": "X ~ Exp(0.833); P(X > 1.5) = e<sup>−0.833 × 1.5</sup> = 0.2865"
+        },
+        {
+          "type": "example",
+          "label": "Practice: chip box inspection",
+          "q": "An engineer inspects 7 boxes of chips. From experience, 35% of boxes are rejected. What distribution models the number of rejections out of 7?",
+          "steps": [
+            "Fixed number of independent trials, each reject or not, constant probability"
+          ],
+          "answer": "X ~ Bin(7, 0.35)"
+        },
+        {
+          "type": "example",
+          "label": "Practice: surgery arrivals",
+          "q": "Patients arrive at 7 per hour and we want the standard deviation of arrivals per hour.",
+          "steps": [
+            "Count in a fixed window, so Poisson with λ = 7",
+            "Variance = λ = 7"
+          ],
+          "answer": "X ~ P(7), standard deviation = √7 ≈ 2.65"
+        },
+        {
+          "type": "example",
+          "label": "Practice: plate thickness",
+          "q": "Plates have equal probability of any thickness between 2 mm and 4.5 mm.",
+          "steps": [
+            "Continuous, flat density between two limits",
+            "Mean = 3.25 mm, standard deviation = 2.5/√12 = 0.72 mm"
+          ],
+          "answer": "X ~ U(2, 4.5)"
+        }
+      ],
+      "essentialsTitle": null,
+      "essentialsHeading": null,
+      "essentials": null,
+      "desc": "PDF vs CDF, then the binomial, uniform, Poisson, exponential, normal and Weibull distributions with worked engineering examples and a which-distribution guide.",
+      "difficulty": "Medium",
+      "readTime": "35 min",
+      "color": "#8855f5"
     },
     {
       "soon": true,
@@ -515,6 +1007,122 @@ window.SITE_CONTENT = {
           ]
         }
       ]
+    },
+    {
+      "heading": "Unit 2: Probability Distributions",
+      "blocks": [
+        {
+          "type": "formulablock",
+          "name": "Binomial: X ~ Bin(n, p)",
+          "eqs": [
+            "P(X=x) = \\frac{n!}{(n-x)!\\,x!}\\,p^{x}(1-p)^{n-x} \\qquad x = 0, 1, \\ldots, n",
+            "\\text{mean} = np \\qquad \\text{variance} = np(1-p)"
+          ],
+          "vars": [
+            {
+              "symbol": "n",
+              "desc": "number of trials"
+            },
+            {
+              "symbol": "p",
+              "desc": "probability of success on each trial"
+            },
+            {
+              "symbol": "x",
+              "desc": "number of successes"
+            }
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Uniform: X ~ U(a, b)",
+          "eqs": [
+            "f(x) = \\frac{1}{b-a} \\qquad F(x) = \\frac{x-a}{b-a} \\qquad a \\le x \\le b",
+            "\\text{mean} = \\frac{a+b}{2} \\qquad \\text{variance} = \\frac{(b-a)^2}{12}"
+          ],
+          "vars": [
+            {
+              "symbol": "a, b",
+              "desc": "lower and upper limits"
+            },
+            {
+              "symbol": "f(x)",
+              "desc": "constant height, so the PDF is a flat rectangle of area 1"
+            }
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Poisson: X ~ P(λ)",
+          "eqs": [
+            "p(x) = \\frac{\\lambda^{x}}{x!}\\,e^{-\\lambda} \\qquad F(x) = e^{-\\lambda}\\sum_{i=0}^{x}\\frac{\\lambda^{i}}{i!}",
+            "\\text{mean} = \\lambda \\qquad \\text{variance} = \\lambda"
+          ],
+          "vars": [
+            {
+              "symbol": "λ",
+              "desc": "average number of events per interval (the window must be stated)"
+            }
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Exponential: X ~ Exp(λ)",
+          "eqs": [
+            "f(x) = \\lambda e^{-\\lambda x} \\qquad F(x) = 1 - e^{-\\lambda x}",
+            "\\text{mean} = \\frac{1}{\\lambda} \\qquad \\text{variance} = \\frac{1}{\\lambda^{2}}"
+          ],
+          "vars": [
+            {
+              "symbol": "λ",
+              "desc": "rate; λ = 1 / (mean gap)"
+            },
+            {
+              "symbol": "x",
+              "desc": "time or distance between successive events"
+            }
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Normal: X ~ N(μ, σ)",
+          "eqs": [
+            "f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\exp\\!\\left[-\\frac{1}{2}\\left(\\frac{x-\\mu}{\\sigma}\\right)^{2}\\right]",
+            "Z = \\frac{X-\\mu}{\\sigma} \\sim N(0,1)"
+          ],
+          "vars": [
+            {
+              "symbol": "μ",
+              "desc": "mean (centre of the bell)"
+            },
+            {
+              "symbol": "σ",
+              "desc": "standard deviation (width)"
+            },
+            {
+              "symbol": "Z",
+              "desc": "standard normal variable, mean 0 and standard deviation 1"
+            }
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Weibull: X ~ W(λ, β)",
+          "eqs": [
+            "f(x) = \\lambda\\beta\\,x^{\\beta-1}e^{-\\lambda x^{\\beta}}"
+          ],
+          "vars": [
+            {
+              "symbol": "λ",
+              "desc": "scale parameter"
+            },
+            {
+              "symbol": "β",
+              "desc": "shape parameter; β = 1 gives the exponential distribution"
+            }
+          ]
+        }
+      ]
     }
   ],
   "formulaSheetSubtitle": "Every calculation covered so far. Variables defined, units stated. Grows as more units are added.",
@@ -581,6 +1189,41 @@ window.SITE_CONTENT = {
           "tag": "U1 — T12",
           "claim": "\"Standard deviation and variance are expressed in the same units.\"",
           "truth": "<strong>FALSE.</strong> Variance is in the <strong>squared</strong> units of the original data (e.g. years²). Standard deviation, its square root, is in the <strong>same units</strong> as the original data (e.g. years) — which is why it's usually the more interpretable measure."
+        }
+      ]
+    },
+    {
+      "heading": "Unit 2: Probability Distributions",
+      "items": [
+        {
+          "tag": "U2 - T1",
+          "claim": "\"The PDF of a continuous variable gives the probability that X equals a particular value.\"",
+          "truth": "<strong>FALSE.</strong> For a continuous variable P(X = x) is zero. The PDF is a density; probability is the <strong>area under it</strong> between two values, which is what the CDF accumulates."
+        },
+        {
+          "tag": "U2 - T2",
+          "claim": "\"For a Poisson variable with mean 5, the variance is 25.\"",
+          "truth": "<strong>FALSE.</strong> For a Poisson, the variance <strong>equals the mean</strong> (both λ), so the variance is 5 and the standard deviation is √5."
+        },
+        {
+          "tag": "U2 - T3",
+          "claim": "\"P(X ≥ 3) for a Poisson variable is 1 − F(3).\"",
+          "truth": "<strong>FALSE.</strong> \"3 or more\" excludes only 0, 1 and 2, so P(X ≥ 3) = 1 − F(<strong>2</strong>). Using F(3) wrongly removes the probability of exactly 3."
+        },
+        {
+          "tag": "U2 - T4",
+          "claim": "\"If events follow a Poisson process with rate λ, the mean gap between events is λ.\"",
+          "truth": "<strong>FALSE.</strong> The mean gap is <strong>1/λ</strong>. The gaps follow an exponential distribution, and λ is the event rate."
+        },
+        {
+          "tag": "U2 - T5",
+          "claim": "\"Normal probabilities can be read straight from a table using the raw value of X.\"",
+          "truth": "<strong>FALSE.</strong> You must first <strong>standardise</strong>: Z = (X − μ)/σ. The table only covers the standard normal with mean 0 and standard deviation 1."
+        },
+        {
+          "tag": "U2 - T6",
+          "claim": "\"The Weibull distribution can never reduce to a simpler distribution.\"",
+          "truth": "<strong>FALSE.</strong> With shape parameter β = 1 the Weibull becomes the <strong>exponential</strong> distribution."
         }
       ]
     }

@@ -56,5 +56,26 @@ const glossaryData = {
       ["Unsupervised learning","A machine learning approach where the model identifies patterns in data with no labelled outcomes (e.g. clustering)"],
       ["Reinforcement learning","A machine learning approach where the model learns by interacting with an environment and receiving reward or penalty feedback"]
     ]
+  },
+  u2: {
+    name: "Unit 2: Probability Distributions",
+    terms: [
+      ["Probability distribution", "A model describing how likely each possible value of a random variable is"],
+      ["Probability density function (PDF)", "For a continuous variable, the curve whose area between two values gives the probability. Its height is a density, not a probability"],
+      ["Probability mass function", "For a discrete variable, the function giving P(X = x) for each possible value x"],
+      ["Cumulative distribution function (CDF)", "F(x) = P(X ≤ x). The running total of probability up to x; rises from 0 to 1"],
+      ["Population parameter", "A fixed number such as λ, μ, σ, n or p that sets the exact shape of a distribution"],
+      ["Binomial distribution", "Models the number of successes in n independent trials each with success probability p. Mean np, variance np(1−p)"],
+      ["Uniform distribution", "Every value between a and b is equally likely. Mean (a+b)/2, variance (b−a)²/12"],
+      ["Poisson distribution", "Models the count of events in a fixed interval of time or space when events occur randomly. Mean and variance both equal λ"],
+      ["Poisson process", "Events occurring randomly and independently at a constant average rate; counts are Poisson and gaps are exponential"],
+      ["Exponential distribution", "Models the time or distance between successive events in a Poisson process. Mean 1/λ, CDF 1 − e^(−λx)"],
+      ["Normal distribution", "Symmetric bell-shaped distribution defined by mean μ and standard deviation σ; widely used for physical measurements and averages"],
+      ["Standard normal distribution", "The normal distribution with mean 0 and standard deviation 1, tabulated in z tables"],
+      ["Standardisation of a normal variable", "Converting X to Z = (X − μ)/σ so that standard normal tables can be used"],
+      ["68-95-99.7 rule", "About 68%, 95% and 99.7% of a normal population lie within 1, 2 and 3 standard deviations of the mean"],
+      ["Weibull distribution", "Flexible family for lifetimes and extreme events, with scale λ and shape β. Reduces to the exponential when β = 1"],
+      ["Complement rule", "P(A) = 1 − P(not A). Makes \"at least one\" calculations quick, e.g. P(X ≥ 1) = 1 − P(X = 0)"]
+    ]
   }
 };
