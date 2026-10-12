@@ -16,7 +16,7 @@ window.SITE_CONFIG = {
   },
   "topicLabels": {
     "u1": "Data & Descriptive Statistics",
-    "u2": "Probability Distributions"
+    "u2": "Modelling Random Behaviour"
   }
 };
 window.SITE_CONTENT = {
@@ -26,19 +26,19 @@ window.SITE_CONTENT = {
     "subtitle": "Statistics and probability as the mathematical backbone of machine learning — descriptive statistics, sampling, modelling random behaviour, and model building, built out unit by unit as the module runs.",
     "stats": [
       {
-        "value": "1 of 5",
+        "value": "2 of 5",
         "label": "Units built"
       },
       {
-        "value": "65+",
+        "value": "85+",
         "label": "Terms"
       },
       {
-        "value": "11",
+        "value": "20",
         "label": "Formulas"
       },
       {
-        "value": "18",
+        "value": "23",
         "label": "Exam Traps"
       }
     ],
@@ -49,7 +49,7 @@ window.SITE_CONTENT = {
       },
       {
         "type": "raw",
-        "html": "<div class=\"card-grid\">\n      <div class=\"topic-card\" onclick=\"showSection('formulas')\" style=\"--bar-color:#3b82e8\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">📐 Formula Sheet</div>\n        <div class=\"topic-desc\">Every equation covered so far. Variables defined, units flagged.</div>\n      </div>\n      <div class=\"topic-card\" onclick=\"showSection('glossary')\" style=\"--bar-color:#2fa15c\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">📚 Glossary</div>\n        <div class=\"topic-desc\">50+ terms from Unit 1. Instant search, topic filter, and flashcard mode.</div>\n      </div>\n      <div class=\"topic-card\" onclick=\"showSection('traps')\" style=\"--bar-color:#e04545\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">⚠️ MCQ Traps</div>\n        <div class=\"topic-desc\">Plausible-but-wrong claims the exam uses. Know what's actually true.</div>\n      </div>\n    </div>"
+        "html": "<div class=\"card-grid\">\n      <div class=\"topic-card\" onclick=\"showSection('formulas')\" style=\"--bar-color:#3b82e8\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">📐 Formula Sheet</div>\n        <div class=\"topic-desc\">Every equation covered so far. Variables defined, units flagged.</div>\n      </div>\n      <div class=\"topic-card\" onclick=\"showSection('glossary')\" style=\"--bar-color:#2fa15c\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">📚 Glossary</div>\n        <div class=\"topic-desc\">85+ terms from Units 1 and 2. Instant search, topic filter, and flashcard mode.</div>\n      </div>\n      <div class=\"topic-card\" onclick=\"showSection('traps')\" style=\"--bar-color:#e04545\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">⚠️ MCQ Traps</div>\n        <div class=\"topic-desc\">Plausible-but-wrong claims the exam uses. Know what's actually true.</div>\n      </div>\n    </div>"
       }
     ]
   },
@@ -441,40 +441,64 @@ window.SITE_CONTENT = {
     {
       "id": "u2",
       "numLabel": "Unit 2 of 5",
-      "title": "Modelling Random Behaviour: Probability Distributions",
-      "subtitle": "Engineers rarely predict one outcome; they model how outcomes vary. This part of Unit 2 covers the standard distribution families, how to read a PDF versus a CDF, and how to pick the right model for a physical situation.",
+      "title": "Modelling Random Behaviour",
+      "subtitle": "Engineers rarely predict one outcome; they model how outcomes vary. This unit builds the rules of probability, applies them to system reliability, introduces random variables, then covers the standard distribution families and how to choose between them.",
       "sections": [
         {
           "type": "toc",
           "title": "In this unit",
           "items": [
             {
-              "href": "#u2-pdfcdf",
-              "label": "PDF vs CDF"
+              "href": "#u2-probability",
+              "label": "Why probability?"
+            },
+            {
+              "href": "#u2-events",
+              "label": "Sample space and events"
+            },
+            {
+              "href": "#u2-rules",
+              "label": "Addition, complement, conditional and product rules"
+            },
+            {
+              "href": "#u2-bayes",
+              "label": "Bayes' theorem and Naive Bayes"
+            },
+            {
+              "href": "#u2-reliability",
+              "label": "Reliability: series and parallel systems"
+            },
+            {
+              "href": "#u2-rv",
+              "label": "Random variables, PMF, PDF, CDF"
+            },
+            {
+              "href": "#u2-families",
+              "label": "Part 2: Common distributions"
             },
             {
               "href": "#u2-binomial",
-              "label": "Binomial distribution"
+              "label": "Binomial"
             },
             {
               "href": "#u2-uniform",
-              "label": "Uniform distribution"
+              "label": "Uniform"
             },
             {
               "href": "#u2-poisson",
-              "label": "Poisson distribution"
+              "label": "Poisson"
             },
             {
               "href": "#u2-exponential",
-              "label": "Exponential distribution"
+              "label": "Exponential"
             },
             {
               "href": "#u2-normal",
-              "label": "Normal distribution"
+              "label": "Normal"
             },
             {
               "href": "#u2-weibull",
-              "label": "Weibull distribution"
+              "label": "Weibull"
             },
             {
               "href": "#u2-choose",
@@ -484,19 +508,439 @@ window.SITE_CONTENT = {
         },
         {
           "type": "h2",
-          "id": "u2-pdfcdf",
-          "text": "PDF vs CDF: Two Ways to Describe the Same Randomness"
+          "id": "u2-probability",
+          "text": "Why Probability? Modelling Uncertainty"
         },
         {
           "type": "p",
-          "text": "A steel supplier quotes a pin diameter of 4.18 mm, but no two pins are identical. A probability distribution is the model that says how likely each diameter is. Every common distribution comes with two functions, and confusing them is the most common early mistake.",
+          "text": "Real engineering data is noisy, incomplete or ambiguous: no two welds fail at exactly the same load, no two batteries last the same time. Probability is the mathematical tool for handling that chance, and it underpins statistical inference (learning about a population from samples). It also sits underneath much of machine learning.",
+          "class": "learn-only"
+        },
+        {
+          "type": "cardgrid",
+          "cards": [
+            {
+              "title": "Learning from data",
+              "color": "#8855f5",
+              "text": "Models use probability to infer patterns from past observations and predict new ones."
+            },
+            {
+              "title": "Decision making",
+              "color": "#8855f5",
+              "text": "Probability ranks options by how likely each is to succeed."
+            },
+            {
+              "title": "Recognition and diagnosis",
+              "color": "#8855f5",
+              "text": "Speech, image and medical systems assign probabilities to interpretations or diseases and pick the most likely."
+            },
+            {
+              "title": "Engineering practice",
+              "color": "#8855f5",
+              "text": "Process control, quality, reliability and risk analysis, modelling complex systems, signal compression."
+            }
+          ]
+        },
+        {
+          "type": "conceptbox",
+          "variant": "note",
+          "html": "<ul>\n<li><strong>Naive Bayes classifier:</strong> applies Bayes' theorem to feature probabilities</li>\n<li><strong>Hidden Markov models:</strong> sequences with hidden states (speech, text)</li>\n<li><strong>Bayesian networks:</strong> graphs of probabilistic relationships between variables</li>\n<li><strong>Gaussian mixture models:</strong> data represented as a mix of normal distributions</li>\n</ul><p>Not every ML model is explicitly probabilistic, but many that deal with uncertainty, inference or prediction are.</p>",
+          "title": "Probabilistic machine learning models"
+        },
+        {
+          "type": "p",
+          "text": "How is a probability found? If all outcomes are known, calculate it directly. More often the outcomes are not all known, so a sample is used to estimate it (manufacturing and quality control). In harder cases a more sophisticated model is needed. Example from Unit 1: what is the probability a steam pipe's failure time exceeds 8 years?",
+          "class": ""
+        },
+        {
+          "type": "h2",
+          "id": "u2-events",
+          "text": "Sample Space and Events"
+        },
+        {
+          "type": "conceptbox",
+          "variant": "note",
+          "html": "<ul>\n<li><strong>Random experiment:</strong> a process that can give different outcomes</li>\n<li><strong>Sample space S:</strong> the set of all possible outcomes</li>\n<li><strong>Event:</strong> a subset of the sample space</li>\n</ul>",
+          "title": "Definitions (learn the notation)"
+        },
+        {
+          "type": "cardgrid",
+          "cards": [
+            {
+              "title": "Coin toss",
+              "color": "#8855f5",
+              "text": "S = {H, T}. Event A = getting a tail = {T}."
+            },
+            {
+              "title": "Die roll",
+              "color": "#8855f5",
+              "text": "S = {1, 2, 3, 4, 5, 6}. Event B = an even number = {2, 4, 6}."
+            },
+            {
+              "title": "Machine breakdown cause",
+              "color": "#8855f5",
+              "text": "S = {electrical, mechanical, misuse}. Event C = electrical or misuse."
+            },
+            {
+              "title": "Defective chips in a box of 500",
+              "color": "#8855f5",
+              "text": "S = {0, 1, 2, ..., 500}. Event D = more than 20 defectives = {21, ..., 500}."
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "id": "u2-rules",
+          "text": "Probabilities from Data: The Rules"
+        },
+        {
+          "type": "p",
+          "text": "A nickel-hydrogen battery manufacturer has a problem with cells shorting out early, and suspects blistered nickel plates. Cutting open 100 cells gives a two-way table of counts:",
           "class": "learn-only"
         },
         {
           "type": "conceptbox",
           "variant": "note",
-          "html": "<ul>\n<li><strong>PDF (probability density function) f(x):</strong> for continuous variables, the height of the curve. It is <em>not</em> a probability itself; area under it is. For discrete variables the equivalent is the <strong>probability mass function</strong> p(x) = P(X = x).</li>\n<li><strong>CDF (cumulative distribution function) F(x):</strong> the probability of getting a value <em>at or below</em> x, so F(x) = P(X ≤ x). It always climbs from 0 to 1.</li>\n<li>The PDF is the derivative of the CDF, and the CDF is the running total (area) of the PDF.</li>\n</ul>",
-          "title": "The two functions"
+          "html": "<ul>\n<li>Short and blister: <strong>35</strong></li>\n<li>Short and no blister: <strong>5</strong></li>\n<li>No short and blister: <strong>15</strong></li>\n<li>No short and no blister: <strong>45</strong></li>\n</ul><p>Each <em>cell</em> is an outcome; the four events are short, not short, blister and not blister.</p>",
+          "title": "Battery cell results (N = 100 cells)"
+        },
+        {
+          "type": "p",
+          "text": "A probability is a number from 0 (impossible) to 1 (certain). With a well-run, large sample, the relative frequency n/N estimates it. So P(short) = 40/100 = 0.4, P(not short) = 0.6 and P(blister) = 0.5.",
+          "class": ""
+        },
+        {
+          "type": "h3",
+          "text": "Addition rule (A or C)"
+        },
+        {
+          "type": "formulablock",
+          "name": "Addition rule",
+          "eqs": [
+            "P(A \\cup C) = P(A) + P(C) - P(A \\cap C)",
+            "\\text{Mutually exclusive: } P(A \\cap C) = 0 \\;\\Rightarrow\\; P(A \\cup C) = P(A) + P(C)"
+          ],
+          "vars": [
+            {
+              "symbol": "A ∪ C",
+              "desc": "A or C (union)"
+            },
+            {
+              "symbol": "A ∩ C",
+              "desc": "A and C (intersection)"
+            },
+            {
+              "symbol": "mutually exclusive",
+              "desc": "cannot occur at the same time"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "label": "Worked example: short or blister",
+          "q": "Using the battery table, what is P(short or blister)?",
+          "steps": [
+            "P(short) + P(blister) = 0.4 + 0.5",
+            "Subtract the overlap counted twice: P(short and blister) = 0.35"
+          ],
+          "answer": "P(short or blister) = 0.4 + 0.5 − 0.35 = 0.55 (check by counting: (35 + 5 + 15)/100)"
+        },
+        {
+          "type": "h3",
+          "text": "Complement"
+        },
+        {
+          "type": "formulablock",
+          "name": "Complement rule",
+          "eqs": [
+            "P(A) + P(A^{C}) = 1 \\qquad P(A^{C}) = 1 - P(A)"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Short and not short are complements: P(not short) = 1 − 0.4 = 0.6. This is the shortcut behind every \"at least one\" question.",
+          "class": ""
+        },
+        {
+          "type": "h3",
+          "text": "Conditional probability and the product rule"
+        },
+        {
+          "type": "p",
+          "text": "Conditional probability asks how likely an event is <em>given</em> that another has occurred. The sample space shrinks to the cases where the given event holds. Among the 50 blistered cells, 35 shorted.",
+          "class": ""
+        },
+        {
+          "type": "formulablock",
+          "name": "Conditional probability and product rule",
+          "eqs": [
+            "P(A \\mid C) = \\frac{P(A \\cap C)}{P(C)} \\qquad P(C) \\ne 0",
+            "P(A \\cap C) = P(A \\mid C)\\,P(C) \\quad \\text{(product rule)}",
+            "\\text{Independent: } P(A \\mid C) = P(A) \\;\\Rightarrow\\; P(A \\cap C) = P(A)\\,P(C)"
+          ],
+          "vars": [
+            {
+              "symbol": "P(A | C)",
+              "desc": "probability of A given C"
+            },
+            {
+              "symbol": "independent",
+              "desc": "knowing one event does not change the probability of the other"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "label": "Worked example: short given blister",
+          "q": "Are shorting and blistering associated in the battery data?",
+          "steps": [
+            "P(short | blister) = 35/50 = 0.7",
+            "Compare with P(short) = 0.4"
+          ],
+          "answer": "0.7 ≠ 0.4, so the events are not independent: blistering raises the chance of shorting. It does not explain all shorts though, since 5 shorted cells had no blisters."
+        },
+        {
+          "type": "conceptbox",
+          "variant": "",
+          "html": "<p>Only when A and C are <strong>independent</strong>. In general you need the conditional form P(A | C)P(C). Also, do not confuse <em>mutually exclusive</em> (cannot happen together, so P(A and C) = 0) with <em>independent</em>.</p>",
+          "title": "Trap: when does P(A and C) = P(A)P(C)?"
+        },
+        {
+          "type": "h2",
+          "id": "u2-bayes",
+          "text": "Bayes' Theorem and Naive Bayes"
+        },
+        {
+          "type": "p",
+          "text": "Sometimes one conditional probability is much easier to find than its reverse. Writing the definition both ways and equating P(A and C) gives Bayes' theorem, which flips the conditioning.",
+          "class": "learn-only"
+        },
+        {
+          "type": "formulablock",
+          "name": "Bayes' theorem",
+          "eqs": [
+            "P(A \\mid C) = \\frac{P(A)\\,P(C \\mid A)}{P(C)}"
+          ]
+        },
+        {
+          "type": "conceptbox",
+          "variant": "note",
+          "html": "<p>Goal: classify a cell as cancerous or non-cancerous from image features such as shape, texture and colour.</p><ul>\n<li><strong>Training:</strong> labelled images give the class proportions P(cancerous), P(non-cancerous) and the likelihoods of each feature given each class.</li>\n<li><strong>Prediction:</strong> for a new cell, Bayes' theorem gives P(cancerous | features) = P(features | cancerous) P(cancerous) / P(features).</li>\n<li><strong>\"Naive\":</strong> it assumes the features are conditionally independent given the class, which keeps the calculation simple.</li>\n</ul>",
+          "title": "Naive Bayes classifier: cancer cells in microscope images"
+        },
+        {
+          "type": "h2",
+          "id": "u2-reliability",
+          "text": "Application: Reliability of Systems"
+        },
+        {
+          "type": "p",
+          "text": "Reliability analysis uses probability for physical systems such as bridges, engines and air conditioning, and for non-physical ones like chains of command or manufacturing quality control. Systems are built from components arranged in series or in parallel, and the system failure probability comes from combining component failure probabilities. Let B<sub>i</sub> be the event that component i fails.",
+          "class": "learn-only"
+        },
+        {
+          "type": "cardgrid",
+          "cards": [
+            {
+              "title": "Series system",
+              "color": "#8855f5",
+              "text": "Works only if every component works, so it fails if any one fails. Failure is a union: P(B₁ or B₂ or ... or B_k). If failures cannot happen together, the probabilities simply add."
+            },
+            {
+              "title": "Parallel (redundant) system",
+              "color": "#8855f5",
+              "text": "Fails only if all components fail. Failure is an intersection: P(B₁ and B₂ and ... and B_k). If components fail independently, multiply the probabilities."
+            }
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "System failure probability",
+          "eqs": [
+            "\\text{Series: } P(\\text{fail}) = P(B_1 \\cup B_2 \\cup \\cdots \\cup B_k)",
+            "\\text{Parallel (independent): } P(\\text{fail}) = P(B_1)\\,P(B_2)\\cdots P(B_k)"
+          ]
+        },
+        {
+          "type": "example",
+          "label": "Worked example: welded component (series)",
+          "q": "Two welds in series each fail with probability 0.01, independently. What is the probability the component fails?",
+          "steps": [
+            "Fails if weld 1 or weld 2 fails: P(B₁ or B₂) = P(B₁) + P(B₂) − P(B₁ and B₂)",
+            "Independence gives P(B₁ and B₂) = 0.01 × 0.01 = 0.0001"
+          ],
+          "answer": "P(fail) = 0.01 + 0.01 − 0.0001 = 0.0199"
+        },
+        {
+          "type": "example",
+          "label": "Worked example: pressure vessel safety valves (parallel)",
+          "q": "Three independent safety valves each fail with probability 0.15. The vessel is unprotected only if all three fail.",
+          "steps": [
+            "Parallel system, independent: multiply",
+            "0.15 × 0.15 × 0.15"
+          ],
+          "answer": "P(system fails) = 0.003375, far lower than any single valve. This is why redundancy is used."
+        },
+        {
+          "type": "h2",
+          "id": "u2-rv",
+          "text": "Random Variables"
+        },
+        {
+          "type": "p",
+          "text": "Often it is easier to attach a number to each outcome. A <strong>random variable</strong> (written with a capital X) assigns a numerical value to each outcome in the sample space. It is a variable because we assign values, and random because those values come from a process with chance in it.",
+          "class": "learn-only"
+        },
+        {
+          "type": "example",
+          "label": "Worked example: failures of a 9Cr steel",
+          "q": "Four specimens of 9Cr steel are tested at 150 MPa and 550 °C. How many fail before 1,000 hours?",
+          "steps": [
+            "Let X = number of failed specimens, so X can be 0, 1, 2, 3 or 4",
+            "The actual value is unknown until the test ends, so we talk about probabilities such as P(X = 1) or P(X < 3)"
+          ],
+          "answer": "X is a discrete random variable"
+        },
+        {
+          "type": "cardgrid",
+          "cards": [
+            {
+              "title": "Discrete",
+              "color": "#8855f5",
+              "text": "Distinct, separate values with gaps between them (the set can still be infinite). Example: number of surface defects on a chip, X = 0, 1, 2, ..."
+            },
+            {
+              "title": "Continuous",
+              "color": "#8855f5",
+              "text": "Any value in an interval. Example: lifetime of a magnetic disk, X in [0, 45000] hours, or [0, ∞)."
+            }
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "Discrete random variables: PMF and CDF"
+        },
+        {
+          "type": "formulablock",
+          "name": "Discrete: probability mass function and CDF",
+          "eqs": [
+            "p(x) = P(X = x) \\qquad F(x) = P(X \\le x) = \\sum_{t \\le x} P(X = t)"
+          ]
+        },
+        {
+          "type": "example",
+          "label": "Worked example: flaws in 1 inch of copper wire",
+          "q": "Wires have 0, 1, 2 or 3 flaws with probabilities 0.48, 0.39, 0.12 and 0.01. Find F(2) and P(X ≥ 2).",
+          "steps": [
+            "F(2) = P(X = 0) + P(X = 1) + P(X = 2) = 0.48 + 0.39 + 0.12 = 0.99",
+            "Quick check using the complement: F(2) = 1 − P(X = 3) = 1 − 0.01",
+            "P(X ≥ 2) = P(X = 2) + P(X = 3) = 0.12 + 0.01"
+          ],
+          "answer": "F(2) = 0.99 and P(X ≥ 2) = 0.13. The full CDF runs 0.48, 0.87, 0.99, 1."
+        },
+        {
+          "type": "h3",
+          "text": "Continuous random variables: PDF and CDF"
+        },
+        {
+          "type": "p",
+          "text": "A continuous variable can take uncountably many values, so probability comes from <strong>area under the curve</strong> of the probability density function f(x). Integration replaces the summation used for discrete variables. The CDF F(x) accumulates that area, so any interval probability is a difference of two CDF values.",
+          "class": ""
+        },
+        {
+          "type": "formulablock",
+          "name": "Continuous: PDF and CDF",
+          "eqs": [
+            "P(a \\le X \\le b) = \\int_{a}^{b} f(x)\\,dx",
+            "F(x) = P(X \\le x) = \\int_{-\\infty}^{x} f(t)\\,dt \\qquad P(a \\le X \\le b) = F(b) - F(a)",
+            "f(x) = \\frac{dF(x)}{dx}"
+          ],
+          "vars": [
+            {
+              "symbol": "f(x)",
+              "desc": "lower case: density (PDF)"
+            },
+            {
+              "symbol": "F(x)",
+              "desc": "upper case: cumulative probability (CDF)"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "label": "Worked example: battery life",
+          "q": "Battery life X (hours) has CDF F(x) = 1 − 1/(x + 1)². Find the probability a battery fails between 1 and 2 hours, by both methods.",
+          "steps": [
+            "CDF method: F(2) = 1 − 1/9 = 8/9 and F(1) = 1 − 1/4 = 3/4",
+            "P(1 ≤ X ≤ 2) = F(2) − F(1) = 8/9 − 3/4",
+            "PDF method: f(x) = dF/dx = 2/(x + 1)³, then integrate from 1 to 2 to get −1/9 + 1/4"
+          ],
+          "answer": "P(1 ≤ X ≤ 2) = 5/36 ≈ 0.139 either way. The CDF route needs only subtraction, which is why it is usually quicker."
+        },
+        {
+          "type": "h3",
+          "text": "Mean and variance of a random variable"
+        },
+        {
+          "type": "formulablock",
+          "name": "Mean (expected value) and variance",
+          "eqs": [
+            "\\text{Discrete: } \\mu_X = \\sum_x x\\,P(X=x) \\qquad \\sigma^2 = \\sum_x (x-\\mu_X)^2\\,P(X=x)",
+            "\\text{Continuous: } \\mu_X = \\int_{-\\infty}^{\\infty} x f(x)\\,dx \\qquad \\sigma^2 = \\int_{-\\infty}^{\\infty} (x-\\mu_X)^2 f(x)\\,dx"
+          ],
+          "vars": [
+            {
+              "symbol": "σ",
+              "desc": "standard deviation = √variance, in the same units as X"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "label": "Applying it: copper wire flaws",
+          "q": "Using the wire flaw probabilities above (this calculation extends the lecture example).",
+          "steps": [
+            "μ = 0(0.48) + 1(0.39) + 2(0.12) + 3(0.01) = 0.66",
+            "σ² = (0.66)²(0.48) + (0.34)²(0.39) + (1.34)²(0.12) + (2.34)²(0.01) = 0.5244"
+          ],
+          "answer": "Mean 0.66 flaws per inch, variance 0.5244, standard deviation 0.724"
+        },
+        {
+          "type": "h3",
+          "text": "Bernoulli trials"
+        },
+        {
+          "type": "p",
+          "text": "A <strong>Bernoulli random variable</strong> has just two outcomes: a coin toss, a valve open or shut, a part defective or not. Outcomes are labelled 1 (success) and 0 (failure). A Bernoulli trial is an experiment with two outcomes and the same success probability every time it is repeated.",
+          "class": ""
+        },
+        {
+          "type": "formulablock",
+          "name": "Bernoulli random variable",
+          "eqs": [
+            "P(X=1) = p \\qquad P(X=0) = 1-p"
+          ],
+          "vars": [
+            {
+              "symbol": "p",
+              "desc": "probability of success"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Add up n independent Bernoulli variables, each with the same p, and the total number of successes X = X₁ + ... + Xₙ follows the <strong>binomial distribution</strong>, written X ~ Bin(n, p). That is the first of the named distributions in the next part.",
+          "class": ""
+        },
+        {
+          "type": "h2",
+          "id": "u2-families",
+          "text": "Part 2: Common Probability Distributions"
+        },
+        {
+          "type": "p",
+          "text": "Each named distribution family has population parameters (n and p, λ, a and b, μ and σ) that fix its exact shape. Choosing the model means picking the family that matches the physical situation, then plugging in the parameters.",
+          "class": ""
         },
         {
           "type": "p",
@@ -534,6 +978,16 @@ window.SITE_CONTENT = {
               "desc": "number of successes"
             }
           ]
+        },
+        {
+          "type": "example",
+          "label": "Worked example: polyester yarn rejects",
+          "q": "A dyeing process rejects 25% of batches. Four batches are dyed per shift. What is the probability exactly 3 are rejected?",
+          "steps": [
+            "X ~ Bin(4, 0.25), x = 3",
+            "P(X = 3) = 4!/((4 − 3)! 3!) × 0.25³ × 0.75¹ = 4 × 0.015625 × 0.75"
+          ],
+          "answer": "P(X = 3) = 0.046875"
         },
         {
           "type": "example",
@@ -929,9 +1383,9 @@ window.SITE_CONTENT = {
       "essentialsTitle": null,
       "essentialsHeading": null,
       "essentials": null,
-      "desc": "PDF vs CDF, then the binomial, uniform, Poisson, exponential, normal and Weibull distributions with worked engineering examples and a which-distribution guide.",
+      "desc": "Probability rules, Bayes' theorem, reliability, random variables (PMF, PDF, CDF, mean and variance), then the binomial, uniform, Poisson, exponential, normal and Weibull distributions.",
       "difficulty": "Medium",
-      "readTime": "35 min",
+      "readTime": "60 min",
       "color": "#8855f5"
     },
     {
@@ -1009,8 +1463,124 @@ window.SITE_CONTENT = {
       ]
     },
     {
-      "heading": "Unit 2: Probability Distributions",
+      "heading": "Unit 2: Modelling Random Behaviour",
       "blocks": [
+        {
+          "type": "formulablock",
+          "name": "Addition rule",
+          "eqs": [
+            "P(A \\cup C) = P(A) + P(C) - P(A \\cap C)",
+            "\\text{Mutually exclusive: } P(A \\cap C) = 0 \\;\\Rightarrow\\; P(A \\cup C) = P(A) + P(C)"
+          ],
+          "vars": [
+            {
+              "symbol": "A ∪ C",
+              "desc": "A or C (union)"
+            },
+            {
+              "symbol": "A ∩ C",
+              "desc": "A and C (intersection)"
+            },
+            {
+              "symbol": "mutually exclusive",
+              "desc": "cannot occur at the same time"
+            }
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Complement rule",
+          "eqs": [
+            "P(A) + P(A^{C}) = 1 \\qquad P(A^{C}) = 1 - P(A)"
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Conditional probability and product rule",
+          "eqs": [
+            "P(A \\mid C) = \\frac{P(A \\cap C)}{P(C)} \\qquad P(C) \\ne 0",
+            "P(A \\cap C) = P(A \\mid C)\\,P(C) \\quad \\text{(product rule)}",
+            "\\text{Independent: } P(A \\mid C) = P(A) \\;\\Rightarrow\\; P(A \\cap C) = P(A)\\,P(C)"
+          ],
+          "vars": [
+            {
+              "symbol": "P(A | C)",
+              "desc": "probability of A given C"
+            },
+            {
+              "symbol": "independent",
+              "desc": "knowing one event does not change the probability of the other"
+            }
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Bayes' theorem",
+          "eqs": [
+            "P(A \\mid C) = \\frac{P(A)\\,P(C \\mid A)}{P(C)}"
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "System failure probability",
+          "eqs": [
+            "\\text{Series: } P(\\text{fail}) = P(B_1 \\cup B_2 \\cup \\cdots \\cup B_k)",
+            "\\text{Parallel (independent): } P(\\text{fail}) = P(B_1)\\,P(B_2)\\cdots P(B_k)"
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Discrete: probability mass function and CDF",
+          "eqs": [
+            "p(x) = P(X = x) \\qquad F(x) = P(X \\le x) = \\sum_{t \\le x} P(X = t)"
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Continuous: PDF and CDF",
+          "eqs": [
+            "P(a \\le X \\le b) = \\int_{a}^{b} f(x)\\,dx",
+            "F(x) = P(X \\le x) = \\int_{-\\infty}^{x} f(t)\\,dt \\qquad P(a \\le X \\le b) = F(b) - F(a)",
+            "f(x) = \\frac{dF(x)}{dx}"
+          ],
+          "vars": [
+            {
+              "symbol": "f(x)",
+              "desc": "lower case: density (PDF)"
+            },
+            {
+              "symbol": "F(x)",
+              "desc": "upper case: cumulative probability (CDF)"
+            }
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Mean (expected value) and variance",
+          "eqs": [
+            "\\text{Discrete: } \\mu_X = \\sum_x x\\,P(X=x) \\qquad \\sigma^2 = \\sum_x (x-\\mu_X)^2\\,P(X=x)",
+            "\\text{Continuous: } \\mu_X = \\int_{-\\infty}^{\\infty} x f(x)\\,dx \\qquad \\sigma^2 = \\int_{-\\infty}^{\\infty} (x-\\mu_X)^2 f(x)\\,dx"
+          ],
+          "vars": [
+            {
+              "symbol": "σ",
+              "desc": "standard deviation = √variance, in the same units as X"
+            }
+          ]
+        },
+        {
+          "type": "formulablock",
+          "name": "Bernoulli random variable",
+          "eqs": [
+            "P(X=1) = p \\qquad P(X=0) = 1-p"
+          ],
+          "vars": [
+            {
+              "symbol": "p",
+              "desc": "probability of success"
+            }
+          ]
+        },
         {
           "type": "formulablock",
           "name": "Binomial: X ~ Bin(n, p)",
@@ -1193,35 +1763,60 @@ window.SITE_CONTENT = {
       ]
     },
     {
-      "heading": "Unit 2: Probability Distributions",
+      "heading": "Unit 2: Modelling Random Behaviour",
       "items": [
         {
           "tag": "U2 - T1",
+          "claim": "\"P(A and C) = P(A)P(C) always holds.\"",
+          "truth": "<strong>FALSE.</strong> The product rule is P(A and C) = P(A | C)P(C). It reduces to P(A)P(C) <strong>only if A and C are independent</strong>."
+        },
+        {
+          "tag": "U2 - T2",
+          "claim": "\"Mutually exclusive events are independent.\"",
+          "truth": "<strong>FALSE.</strong> Mutually exclusive events cannot happen together, so P(A and C) = 0. If either has a non-zero probability, knowing one occurred tells you the other did not, so they are <strong>dependent</strong>."
+        },
+        {
+          "tag": "U2 - T3",
+          "claim": "\"For a series system, failure probability is the product of the component failure probabilities.\"",
+          "truth": "<strong>FALSE.</strong> A series system fails if <strong>any</strong> component fails (a union: add, subtract overlap). Multiplying independent failure probabilities is the rule for a <strong>parallel</strong> system, which fails only if all components fail."
+        },
+        {
+          "tag": "U2 - T4",
+          "claim": "\"P(A | C) and P(C | A) are always equal.\"",
+          "truth": "<strong>FALSE.</strong> They share the numerator P(A and C) but have different denominators. Bayes' theorem relates them: P(A | C) = P(A)P(C | A)/P(C)."
+        },
+        {
+          "tag": "U2 - T5",
+          "claim": "\"F(x) is the probability density at x.\"",
+          "truth": "<strong>FALSE.</strong> Upper-case F is the <strong>cumulative</strong> probability P(X ≤ x). Lower-case f is the density, and f = dF/dx."
+        },
+        {
+          "tag": "U2 - T6",
           "claim": "\"The PDF of a continuous variable gives the probability that X equals a particular value.\"",
           "truth": "<strong>FALSE.</strong> For a continuous variable P(X = x) is zero. The PDF is a density; probability is the <strong>area under it</strong> between two values, which is what the CDF accumulates."
         },
         {
-          "tag": "U2 - T2",
+          "tag": "U2 - T7",
           "claim": "\"For a Poisson variable with mean 5, the variance is 25.\"",
           "truth": "<strong>FALSE.</strong> For a Poisson, the variance <strong>equals the mean</strong> (both λ), so the variance is 5 and the standard deviation is √5."
         },
         {
-          "tag": "U2 - T3",
+          "tag": "U2 - T8",
           "claim": "\"P(X ≥ 3) for a Poisson variable is 1 − F(3).\"",
           "truth": "<strong>FALSE.</strong> \"3 or more\" excludes only 0, 1 and 2, so P(X ≥ 3) = 1 − F(<strong>2</strong>). Using F(3) wrongly removes the probability of exactly 3."
         },
         {
-          "tag": "U2 - T4",
+          "tag": "U2 - T9",
           "claim": "\"If events follow a Poisson process with rate λ, the mean gap between events is λ.\"",
           "truth": "<strong>FALSE.</strong> The mean gap is <strong>1/λ</strong>. The gaps follow an exponential distribution, and λ is the event rate."
         },
         {
-          "tag": "U2 - T5",
+          "tag": "U2 - T10",
           "claim": "\"Normal probabilities can be read straight from a table using the raw value of X.\"",
           "truth": "<strong>FALSE.</strong> You must first <strong>standardise</strong>: Z = (X − μ)/σ. The table only covers the standard normal with mean 0 and standard deviation 1."
         },
         {
-          "tag": "U2 - T6",
+          "tag": "U2 - T11",
           "claim": "\"The Weibull distribution can never reduce to a simpler distribution.\"",
           "truth": "<strong>FALSE.</strong> With shape parameter β = 1 the Weibull becomes the <strong>exponential</strong> distribution."
         }
@@ -1229,5 +1824,5 @@ window.SITE_CONTENT = {
     }
   ],
   "trapsSubtitle": "Plausible-but-wrong claims the exam uses. Read each one. Know what's actually true.",
-  "glossaryIntro": "Search across all 50+ terms instantly. Filter by unit."
+  "glossaryIntro": "Search across all 85+ terms instantly. Filter by unit."
 };
