@@ -97,3 +97,108 @@ const glossaryData = {
     ]
   }
 };
+
+/* Side-by-side comparisons, shown in term previews and expanded glossary entries */
+const glossaryComparisons = [
+  { terms: ["Population", "Sample"],
+    rows: [
+      ["What it is", "Every item of interest", "A subset actually measured"],
+      ["Described by", "Parameters (μ, σ)", "Statistics (x̄, s)"]
+    ] },
+  { terms: ["Parameter", "Statistic"],
+    rows: [
+      ["Describes", "A population", "A sample"],
+      ["Known?", "Usually not", "Yes, calculated"],
+      ["Symbols", "μ, σ, p", "x̄, s, p̂"]
+    ] },
+  { terms: ["Descriptive statistics", "Inferential statistics"],
+    rows: [
+      ["Goal", "Summarise the data you have", "Draw conclusions about a population"],
+      ["Tools", "Mean, median, SD, plots", "Confidence intervals, hypothesis tests"]
+    ] },
+  { terms: ["Probability sampling", "Non-probability sampling"],
+    rows: [
+      ["Selection", "Random, every member has a known chance", "Not random (convenience, judgement)"],
+      ["Bias", "Low, results generalise", "Risk of bias"]
+    ] },
+  { terms: ["Sampling with replacement", "Sampling without replacement"],
+    rows: [
+      ["Item returned?", "Yes", "No"],
+      ["Draws", "Independent", "Dependent"],
+      ["Repeats possible?", "Yes", "No"]
+    ] },
+  { terms: ["Simple random sampling", "Stratified random sampling", "Cluster random sampling"],
+    rows: [
+      ["How", "Every member equally likely", "Random within each subgroup (stratum)", "Randomly pick whole groups"],
+      ["Best when", "Population is homogeneous", "Subgroups differ and must be represented", "Population is naturally grouped"]
+    ] },
+  { terms: ["Sample mean", "Sample median"],
+    rows: [
+      ["Definition", "Sum ÷ n", "Middle value of sorted data"],
+      ["Outliers", "Pulled towards them", "Robust"],
+      ["Skewed data", "Shifts towards the tail", "Better measure of centre"]
+    ] },
+  { terms: ["Variance", "Standard deviation"],
+    rows: [
+      ["Formula", "s² = Σ(x − x̄)²/(n − 1)", "s = √variance"],
+      ["Units", "Squared units", "Same units as the data"]
+    ] },
+  { terms: ["Absolute frequency", "Relative frequency"],
+    rows: [
+      ["Value", "Count in each class", "Count ÷ total"],
+      ["Sum over classes", "n", "1"]
+    ] },
+  { terms: ["Right skew", "Left skew"],
+    aliases: [["positive skew", "right-skewed"], ["negative skew", "left-skewed"]],
+    rows: [
+      ["Long tail", "To the right", "To the left"],
+      ["Mean vs median", "Mean > median", "Mean < median"]
+    ] },
+  { terms: ["Normalisation", "Standardisation"],
+    rows: [
+      ["Result", "Scaled to [0, 1]", "Mean 0, SD 1"],
+      ["Formula", "(x − min)/(max − min)", "z = (x − x̄)/s"],
+      ["Outliers", "Very sensitive", "Less sensitive"]
+    ] },
+  { terms: ["Supervised learning", "Unsupervised learning", "Reinforcement learning"],
+    rows: [
+      ["Data", "Labelled", "Unlabelled", "Rewards from an environment"],
+      ["Goal", "Predict labels", "Find structure", "Learn actions that maximise reward"],
+      ["Example", "Classification, regression", "Clustering", "Game-playing agents"]
+    ] },
+  { terms: ["Mutually exclusive events", "Independent events"],
+    rows: [
+      ["Meaning", "Cannot happen together", "One doesn't affect the other's probability"],
+      ["P(A and B)", "0", "P(A)·P(B)"],
+      ["Note", "Mutually exclusive events (with P > 0) are never independent", ""]
+    ] },
+  { terms: ["Discrete random variable", "Continuous random variable"],
+    rows: [
+      ["Values", "Countable", "Any value in an interval"],
+      ["Described by", "Probability mass function", "Probability density function"],
+      ["P(X = x)", "Can be > 0", "Always 0"]
+    ] },
+  { terms: ["Series system", "Parallel system"],
+    rows: [
+      ["Works if", "Every component works", "At least one component works"],
+      ["Reliability", "R = R₁R₂…Rₙ", "R = 1 − (1 − R₁)…(1 − Rₙ)"],
+      ["Adding components", "Lowers reliability", "Raises reliability"]
+    ] },
+  { terms: ["Binomial distribution", "Poisson distribution"],
+    rows: [
+      ["Counts", "Successes in n fixed trials", "Events in a fixed interval"],
+      ["Parameters", "n, p", "λ"],
+      ["Mean, variance", "np, np(1 − p)", "λ, λ"]
+    ] },
+  { terms: ["Poisson distribution", "Exponential distribution"],
+    rows: [
+      ["Random variable", "Number of events in an interval", "Time between events"],
+      ["Type", "Discrete", "Continuous"],
+      ["Mean", "λ", "1/λ"]
+    ] },
+  { terms: ["Normal distribution", "Standard normal distribution"],
+    rows: [
+      ["Parameters", "Any μ, σ", "μ = 0, σ = 1"],
+      ["Variable", "X", "Z = (X − μ)/σ"]
+    ] }
+];
