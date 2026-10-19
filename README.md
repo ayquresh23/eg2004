@@ -8,6 +8,7 @@ Study site for EG2004 (AI, Machine Learning and Data Analysis) at Swansea Univer
 
 - Unit 1: Data — Descriptive Statistics & Displays (sampling, data quality, summary statistics, box plots & histograms, outliers, missing data, preprocessing)
 - Unit 2: Modelling Random Behaviour (probability rules, Bayes, reliability, random variables, PMF/PDF/CDF, binomial, uniform, Poisson, exponential, normal, Weibull, which-distribution guide)
+- Distribution Cheat Sheet: a flowchart for picking the right distribution, with formulas and worked examples for all six
 - 85+ glossary terms with flashcard mode
 - Formula sheet
 - 23 MCQ trap cards

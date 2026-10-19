@@ -50,7 +50,7 @@ window.SITE_CONTENT = {
       },
       {
         "type": "raw",
-        "html": "<div class=\"card-grid\">\n      <div class=\"topic-card\" onclick=\"showSection('formulas')\" style=\"--bar-color:#3b82e8\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">📐 Formula Sheet</div>\n        <div class=\"topic-desc\">Every equation covered so far. Variables defined, units flagged.</div>\n      </div>\n      <div class=\"topic-card\" onclick=\"showSection('glossary')\" style=\"--bar-color:#2fa15c\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">📚 Glossary</div>\n        <div class=\"topic-desc\">85+ terms from Units 1 and 2. Instant search, topic filter, and flashcard mode.</div>\n      </div>\n      <div class=\"topic-card\" onclick=\"showSection('traps')\" style=\"--bar-color:#e04545\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">⚠️ MCQ Traps</div>\n        <div class=\"topic-desc\">Plausible-but-wrong claims the exam uses. Know what's actually true.</div>\n      </div>\n    </div>"
+        "html": "<div class=\"card-grid\">\n      <div class=\"topic-card\" onclick=\"showSection('formulas')\" style=\"--bar-color:#3b82e8\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">📐 Formula Sheet</div>\n        <div class=\"topic-desc\">Every equation covered so far. Variables defined, units flagged.</div>\n      </div>\n      <div class=\"topic-card\" onclick=\"showSection('glossary')\" style=\"--bar-color:#2fa15c\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">📚 Glossary</div>\n        <div class=\"topic-desc\">85+ terms from Units 1 and 2. Instant search, topic filter, and flashcard mode.</div>\n      </div>\n      <div class=\"topic-card\" onclick=\"showSection('traps')\" style=\"--bar-color:#e04545\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">⚠️ MCQ Traps</div>\n        <div class=\"topic-desc\">Plausible-but-wrong claims the exam uses. Know what's actually true.</div>\n      </div>\n      <div class=\"topic-card\" onclick=\"showSection('cheatsheet')\" style=\"--bar-color:#e05c00\">\n        <div class=\"topic-num\">Reference</div>\n        <div class=\"topic-title\">🧭 Distribution Cheat Sheet</div>\n        <div class=\"topic-desc\">Flowchart to pick the right distribution, with formulas and worked examples.</div>\n      </div>\n    </div>"
       }
     ]
   },
@@ -1253,7 +1253,7 @@ window.SITE_CONTENT = {
           "type": "formulablock",
           "name": "Weibull: X ~ W(λ, β)",
           "eqs": [
-            "f(x) = \\lambda\\beta\\,x^{\\beta-1}e^{-\\lambda x^{\\beta}}"
+            "f(x) = \\beta\\lambda^{\\beta}\\,x^{\\beta-1}e^{-(\\lambda x)^{\\beta}}"
           ],
           "vars": [
             {
@@ -1414,7 +1414,372 @@ window.SITE_CONTENT = {
       "sections": []
     }
   ],
-  "extraSections": null,
+  "extraSections": [
+    {
+      "type": "raw",
+      "html": "<section id=\"cheatsheet\" class=\"section\"><div class=\"container\"><div class=\"topic-num\">Quick reference</div><h1>Distribution Cheat Sheet</h1><p class=\"hero-subtitle\">Six distributions, one flowchart. Work out which one a question is asking about, then grab the formula and a worked example. Every number here is checked against the lecture slides.</p>"
+    },
+    {
+      "type": "h2",
+      "id": "cs-pick",
+      "text": "Step 1: Pick the distribution"
+    },
+    {
+      "type": "p",
+      "text": "Start at the top and answer the questions in order. Tap a coloured box to jump straight to that distribution's formula and worked example.",
+      "class": ""
+    },
+    {
+      "type": "raw",
+      "html": "<div style=\"overflow-x:auto;margin:18px 0;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--bg-elev)\"><svg viewBox=\"0 0 960 650\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-labelledby=\"cs-flow-title\" style=\"width:100%;min-width:760px;height:auto;display:block;font-family:inherit\"><title id=\"cs-flow-title\">Flowchart for choosing a probability distribution</title><defs><marker id=\"cs-arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10 z\" fill=\"var(--text-2)\"/></marker></defs><rect x=\"330\" y=\"14\" width=\"300\" height=\"52\" rx=\"26\" fill=\"var(--accent)\" fill-opacity=\"0.18\" stroke=\"var(--accent)\" stroke-width=\"2\"/><text x=\"480\" y=\"38\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"700\" fill=\"var(--text)\">What kind of thing is X?</text><text x=\"480\" y=\"57\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"400\" fill=\"var(--text-2)\">(the quantity you are modelling)</text><line x1=\"430\" y1=\"66\" x2=\"165.0\" y2=\"118\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><line x1=\"530\" y1=\"66\" x2=\"665.0\" y2=\"118\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><rect x=\"30\" y=\"120\" width=\"270\" height=\"54\" rx=\"10\" fill=\"var(--bg-elev)\" stroke=\"var(--blue)\" stroke-width=\"2\"/><text x=\"165.0\" y=\"143\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"700\" fill=\"var(--blue)\">COUNTING</text><text x=\"165.0\" y=\"163\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"400\" fill=\"var(--text-2)\">whole numbers: 0, 1, 2, 3 ...</text><rect x=\"540\" y=\"120\" width=\"250\" height=\"54\" rx=\"10\" fill=\"var(--bg-elev)\" stroke=\"var(--purple)\" stroke-width=\"2\"/><text x=\"665.0\" y=\"143\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"700\" fill=\"var(--purple)\">MEASURING</text><text x=\"665.0\" y=\"163\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"400\" fill=\"var(--text-2)\">any value: kg, mm, hours</text><line x1=\"165.0\" y1=\"174\" x2=\"165.0\" y2=\"212\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><rect x=\"30\" y=\"212\" width=\"270\" height=\"62\" rx=\"10\" fill=\"var(--bg-elev)\" stroke=\"var(--border)\" stroke-width=\"1.5\"/><text x=\"165.0\" y=\"239.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">A fixed number of trials,</text><text x=\"165.0\" y=\"257.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">each one pass or fail?</text><line x1=\"300\" y1=\"243.0\" x2=\"343\" y2=\"243.0\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><text x=\"312\" y=\"235.0\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text-2)\">yes</text><g class=\"cs-leaf\" tabindex=\"0\" role=\"link\" aria-label=\"Jump to Binomial\" onclick=\"document.getElementById('cs-binomial').scrollIntoView({behavior:'smooth',block:'start'})\" onkeydown=\"if(event.key==='Enter'){document.getElementById('cs-binomial').scrollIntoView({behavior:'smooth',block:'start'})}\" style=\"cursor:pointer\"><rect x=\"345\" y=\"215\" width=\"150\" height=\"56\" rx=\"10\" fill=\"var(--blue)\" fill-opacity=\"0.18\" stroke=\"var(--blue)\" stroke-width=\"2\"/><text x=\"420.0\" y=\"241.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"700\" fill=\"var(--text)\">Binomial</text><text x=\"420.0\" y=\"261.0\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"400\" fill=\"var(--text-2)\">Bin(n, p)</text></g><line x1=\"165.0\" y1=\"274\" x2=\"165.0\" y2=\"318\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><text x=\"175.0\" y=\"302\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text-2)\">no</text><rect x=\"30\" y=\"318\" width=\"270\" height=\"62\" rx=\"10\" fill=\"var(--bg-elev)\" stroke=\"var(--border)\" stroke-width=\"1.5\"/><text x=\"165.0\" y=\"345.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">Events inside a fixed time</text><text x=\"165.0\" y=\"363.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">or space, with an average rate?</text><line x1=\"300\" y1=\"349.0\" x2=\"343\" y2=\"349.0\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><text x=\"312\" y=\"341.0\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text-2)\">yes</text><g class=\"cs-leaf\" tabindex=\"0\" role=\"link\" aria-label=\"Jump to Poisson\" onclick=\"document.getElementById('cs-poisson').scrollIntoView({behavior:'smooth',block:'start'})\" onkeydown=\"if(event.key==='Enter'){document.getElementById('cs-poisson').scrollIntoView({behavior:'smooth',block:'start'})}\" style=\"cursor:pointer\"><rect x=\"345\" y=\"321\" width=\"150\" height=\"56\" rx=\"10\" fill=\"var(--blue)\" fill-opacity=\"0.18\" stroke=\"var(--blue)\" stroke-width=\"2\"/><text x=\"420.0\" y=\"347.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"700\" fill=\"var(--text)\">Poisson</text><text x=\"420.0\" y=\"367.0\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"400\" fill=\"var(--text-2)\">Po(λ)</text></g><line x1=\"665.0\" y1=\"174\" x2=\"665.0\" y2=\"212\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><rect x=\"540\" y=\"212\" width=\"250\" height=\"62\" rx=\"10\" fill=\"var(--bg-elev)\" stroke=\"var(--border)\" stroke-width=\"1.5\"/><text x=\"665.0\" y=\"239.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">Equally likely anywhere</text><text x=\"665.0\" y=\"257.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">between a and b?</text><line x1=\"790\" y1=\"243.0\" x2=\"823\" y2=\"243.0\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><text x=\"795\" y=\"235.0\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text-2)\">yes</text><g class=\"cs-leaf\" tabindex=\"0\" role=\"link\" aria-label=\"Jump to Uniform\" onclick=\"document.getElementById('cs-uniform').scrollIntoView({behavior:'smooth',block:'start'})\" onkeydown=\"if(event.key==='Enter'){document.getElementById('cs-uniform').scrollIntoView({behavior:'smooth',block:'start'})}\" style=\"cursor:pointer\"><rect x=\"825\" y=\"215\" width=\"125\" height=\"56\" rx=\"10\" fill=\"var(--purple)\" fill-opacity=\"0.18\" stroke=\"var(--purple)\" stroke-width=\"2\"/><text x=\"887.5\" y=\"241.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"700\" fill=\"var(--text)\">Uniform</text><text x=\"887.5\" y=\"261.0\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"400\" fill=\"var(--text-2)\">U(a, b)</text></g><line x1=\"665.0\" y1=\"274\" x2=\"665.0\" y2=\"318\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><text x=\"675.0\" y=\"302\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text-2)\">no</text><rect x=\"540\" y=\"318\" width=\"250\" height=\"62\" rx=\"10\" fill=\"var(--bg-elev)\" stroke=\"var(--border)\" stroke-width=\"1.5\"/><text x=\"665.0\" y=\"345.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">Time or distance BETWEEN</text><text x=\"665.0\" y=\"363.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">events?</text><line x1=\"790\" y1=\"349.0\" x2=\"823\" y2=\"349.0\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><text x=\"795\" y=\"341.0\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text-2)\">yes</text><g class=\"cs-leaf\" tabindex=\"0\" role=\"link\" aria-label=\"Jump to Exponential\" onclick=\"document.getElementById('cs-exponential').scrollIntoView({behavior:'smooth',block:'start'})\" onkeydown=\"if(event.key==='Enter'){document.getElementById('cs-exponential').scrollIntoView({behavior:'smooth',block:'start'})}\" style=\"cursor:pointer\"><rect x=\"825\" y=\"321\" width=\"125\" height=\"56\" rx=\"10\" fill=\"var(--purple)\" fill-opacity=\"0.18\" stroke=\"var(--purple)\" stroke-width=\"2\"/><text x=\"887.5\" y=\"347.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"700\" fill=\"var(--text)\">Exponential</text><text x=\"887.5\" y=\"367.0\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"400\" fill=\"var(--text-2)\">Exp(λ)</text></g><line x1=\"665.0\" y1=\"380\" x2=\"665.0\" y2=\"424\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><text x=\"675.0\" y=\"408\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text-2)\">no</text><rect x=\"540\" y=\"424\" width=\"250\" height=\"62\" rx=\"10\" fill=\"var(--bg-elev)\" stroke=\"var(--border)\" stroke-width=\"1.5\"/><text x=\"665.0\" y=\"451.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">Symmetric bell shape?</text><text x=\"665.0\" y=\"469.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">(physical measurement)</text><line x1=\"790\" y1=\"455.0\" x2=\"823\" y2=\"455.0\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><text x=\"795\" y=\"447.0\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text-2)\">yes</text><g class=\"cs-leaf\" tabindex=\"0\" role=\"link\" aria-label=\"Jump to Normal\" onclick=\"document.getElementById('cs-normal').scrollIntoView({behavior:'smooth',block:'start'})\" onkeydown=\"if(event.key==='Enter'){document.getElementById('cs-normal').scrollIntoView({behavior:'smooth',block:'start'})}\" style=\"cursor:pointer\"><rect x=\"825\" y=\"427\" width=\"125\" height=\"56\" rx=\"10\" fill=\"var(--purple)\" fill-opacity=\"0.18\" stroke=\"var(--purple)\" stroke-width=\"2\"/><text x=\"887.5\" y=\"453.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"700\" fill=\"var(--text)\">Normal</text><text x=\"887.5\" y=\"473.0\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"400\" fill=\"var(--text-2)\">N(μ, σ)</text></g><line x1=\"665.0\" y1=\"486\" x2=\"665.0\" y2=\"530\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><text x=\"675.0\" y=\"514\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text-2)\">no</text><rect x=\"540\" y=\"530\" width=\"250\" height=\"62\" rx=\"10\" fill=\"var(--bg-elev)\" stroke=\"var(--border)\" stroke-width=\"1.5\"/><text x=\"665.0\" y=\"557.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">Lifetime or extreme</text><text x=\"665.0\" y=\"575.0\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"400\" fill=\"var(--text)\">event?</text><line x1=\"790\" y1=\"561.0\" x2=\"823\" y2=\"561.0\" stroke=\"var(--text-2)\" stroke-width=\"1.8\" marker-end=\"url(#cs-arrow)\"/><text x=\"795\" y=\"553.0\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text-2)\">yes</text><g class=\"cs-leaf\" tabindex=\"0\" role=\"link\" aria-label=\"Jump to Weibull\" onclick=\"document.getElementById('cs-weibull').scrollIntoView({behavior:'smooth',block:'start'})\" onkeydown=\"if(event.key==='Enter'){document.getElementById('cs-weibull').scrollIntoView({behavior:'smooth',block:'start'})}\" style=\"cursor:pointer\"><rect x=\"825\" y=\"533\" width=\"125\" height=\"56\" rx=\"10\" fill=\"var(--purple)\" fill-opacity=\"0.18\" stroke=\"var(--purple)\" stroke-width=\"2\"/><text x=\"887.5\" y=\"559.0\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"700\" fill=\"var(--text)\">Weibull</text><text x=\"887.5\" y=\"579.0\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"400\" fill=\"var(--text-2)\">W(λ, β)</text></g><rect x=\"30\" y=\"440\" width=\"465\" height=\"110\" rx=\"10\" fill=\"var(--accent)\" fill-opacity=\"0.08\" stroke=\"var(--accent)\" stroke-width=\"1.5\" stroke-dasharray=\"6 4\"/><text x=\"262\" y=\"468\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--text)\">Poisson and Exponential are partners</text><text x=\"262\" y=\"490\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"400\" fill=\"var(--text-2)\">Poisson counts the events in a window.</text><text x=\"262\" y=\"508\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"400\" fill=\"var(--text-2)\">Exponential measures the gap between events.</text><text x=\"262\" y=\"530\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"400\" fill=\"var(--text-2)\">Poisson λ = events per window. Exponential λ = 1 / mean gap.</text></svg></div>"
+    },
+    {
+      "type": "conceptbox",
+      "variant": "note",
+      "title": "Two different lambdas",
+      "html": "<p>Poisson &lambda; is the <strong>average number of events per window</strong> (5 fractures per girder). Exponential &lambda; is <strong>1 divided by the average gap</strong> (gap of 1.67 m gives &lambda; = 0.6). Mixing these up is the most common slip.</p>"
+    },
+    {
+      "type": "h2",
+      "id": "cs-keywords",
+      "text": "Step 2: Spot it from the wording"
+    },
+    {
+      "type": "p",
+      "text": "Exam questions rarely name the distribution. These phrases give it away.",
+      "class": ""
+    },
+    {
+      "type": "raw",
+      "html": "<div class=\"table-wrap\"><table><thead><tr><th>If the question says...</th><th>Use</th><th>Why</th></tr></thead><tbody><tr><td>&ldquo;out of 7 boxes, probability 2 are rejected&rdquo;, &ldquo;at least one of the six&rdquo;</td><td>Binomial</td><td>Fixed number of pass/fail trials</td></tr><tr><td>&ldquo;on average 3 per day&rdquo;, &ldquo;7 per hour&rdquo;, &ldquo;5 fractures per 10 m&rdquo;</td><td>Poisson</td><td>Count in a fixed window, rate given</td></tr><tr><td>&ldquo;time between failures&rdquo;, &ldquo;gap between cracks&rdquo;, &ldquo;waiting time&rdquo;</td><td>Exponential</td><td>Gap between events</td></tr><tr><td>&ldquo;equal probability between 2 mm and 4.5 mm&rdquo;</td><td>Uniform</td><td>Flat across a range</td></tr><tr><td>&ldquo;mean of 11 kg and standard deviation 0.3 kg&rdquo;</td><td>Normal</td><td>Bell-shaped measurement</td></tr><tr><td>&ldquo;lifetime of a boiler component&rdquo;, &ldquo;100-year flood&rdquo;</td><td>Weibull</td><td>Lifetimes and extremes</td></tr></tbody></table></div>"
+    },
+    {
+      "type": "h2",
+      "id": "cs-six",
+      "text": "Step 3: The six distributions, one at a time"
+    },
+    {
+      "type": "p",
+      "text": "Each one follows the same pattern: the real-world picture first, then the formula, then a worked example from the lectures.",
+      "class": ""
+    },
+    {
+      "type": "raw",
+      "html": "<h3 id=\"cs-binomial\" style=\"scroll-margin-top:90px;color:#3b82e8\">Binomial <span style=\"font-weight:400;color:var(--text-2);font-size:0.8em\">X ~ Bin(n, p) &middot; counting</span></h3>"
+    },
+    {
+      "type": "p",
+      "text": "Think of flipping a biased coin n times and counting the heads. A dye process rejects 25% of batches and 4 batches are dyed per shift. The number rejected in a shift is Binomial. Each single trial (reject or accept) is a <strong>Bernoulli trial</strong>, coded 1 for success and 0 for failure.",
+      "class": ""
+    },
+    {
+      "type": "formulablock",
+      "name": "Binomial: X ~ Bin(n, p)",
+      "eqs": [
+        "p(x) = P(X = x) = \\frac{n!}{(n-x)!\\,x!}\\,p^{x}(1-p)^{n-x}, \\quad x = 0, 1, \\dots, n",
+        "\\text{mean} = np \\qquad \\text{variance} = np(1-p)"
+      ],
+      "vars": [
+        {
+          "symbol": "n",
+          "desc": "number of independent trials"
+        },
+        {
+          "symbol": "p",
+          "desc": "probability of success on each trial (same every time)"
+        },
+        {
+          "symbol": "x",
+          "desc": "number of successes you are asking about"
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "label": "Worked example: blood pressure trial",
+      "q": "6 participants, each responds to the treatment with probability 0.25. What is the probability at least one responds?",
+      "steps": [
+        "X ~ Bin(6, 0.25)",
+        "&ldquo;At least one&rdquo; is easier as 1 minus none: P(X &ge; 1) = 1 &minus; P(X = 0)",
+        "P(X = 0) = 0.75<sup>6</sup> = 0.1780"
+      ],
+      "answer": "P(X &ge; 1) = 1 &minus; 0.1780 = 0.8220"
+    },
+    {
+      "type": "raw",
+      "html": "<h3 id=\"cs-poisson\" style=\"scroll-margin-top:90px;color:#3b82e8\">Poisson <span style=\"font-weight:400;color:var(--text-2);font-size:0.8em\">X ~ Po(&lambda;) &middot; counting</span></h3>"
+    },
+    {
+      "type": "p",
+      "text": "Think of counting hairline fractures along a 10 m steel girder, droplets in a microscope image or patients arriving per hour. There is no fixed number of trials, just a window of time or space and an average count for that window.",
+      "class": ""
+    },
+    {
+      "type": "formulablock",
+      "name": "Poisson: X ~ Po(λ)",
+      "eqs": [
+        "p(x) = \\frac{\\lambda^{x}}{x!}\\,e^{-\\lambda} \\qquad F(x) = e^{-\\lambda}\\sum_{i=0}^{x}\\frac{\\lambda^{i}}{i!}",
+        "\\text{mean} = \\lambda \\qquad \\text{variance} = \\lambda \\qquad \\text{standard deviation} = \\sqrt{\\lambda}"
+      ],
+      "vars": [
+        {
+          "symbol": "λ",
+          "desc": "average number of events per window. If the window doubles, λ doubles"
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "label": "Worked example: droplet images",
+      "q": "Images average 5 droplets each. Find the probability of exactly 3 droplets in one image, the standard deviation, and the probability of more than 7 droplets across two images.",
+      "steps": [
+        "One image: X ~ Po(5). P(X = 3) = 5<sup>3</sup>e<sup>&minus;5</sup>/3! = 0.140",
+        "Standard deviation = &radic;5 = 2.236",
+        "Two images: the window doubled, so X ~ Po(10)",
+        "P(X &gt; 7) = 1 &minus; P(X &le; 7)"
+      ],
+      "answer": "0.140, 2.236 and P(X &gt; 7) = 0.7798"
+    },
+    {
+      "type": "raw",
+      "html": "<h3 id=\"cs-uniform\" style=\"scroll-margin-top:90px;color:#8855f5\">Uniform <span style=\"font-weight:400;color:var(--text-2);font-size:0.8em\">X ~ U(a, b) &middot; measuring</span></h3>"
+    },
+    {
+      "type": "p",
+      "text": "Think of a machined pin whose diameter could land anywhere between 4.182 mm and 4.185 mm, with no value more likely than any other. The probability is just a fraction of the range.",
+      "class": ""
+    },
+    {
+      "type": "formulablock",
+      "name": "Uniform: X ~ U(a, b)",
+      "eqs": [
+        "f(x) = \\frac{1}{b-a} \\qquad F(x) = \\frac{x-a}{b-a}\\ \\ (a \\le x \\le b)",
+        "\\text{mean} = \\frac{a+b}{2} \\qquad \\text{variance} = \\frac{(b-a)^{2}}{12}"
+      ]
+    },
+    {
+      "type": "example",
+      "label": "Worked example: metal pins",
+      "q": "Pin diameter X ~ U(4.182, 4.185) mm. What is the probability a random pin fits a 4.184 mm hole?",
+      "steps": [
+        "P(X &le; 4.184) = F(4.184) = (4.184 &minus; 4.182) / (4.185 &minus; 4.182)",
+        "= 0.002 / 0.003"
+      ],
+      "answer": "0.6667. Mean 4.1835 mm, standard deviation 0.003/&radic;12 = 0.00087 mm"
+    },
+    {
+      "type": "raw",
+      "html": "<h3 id=\"cs-exponential\" style=\"scroll-margin-top:90px;color:#8855f5\">Exponential <span style=\"font-weight:400;color:var(--text-2);font-size:0.8em\">X ~ Exp(&lambda;) &middot; measuring</span></h3>"
+    },
+    {
+      "type": "p",
+      "text": "Think of the waiting time for the next phone call at a help desk, the time between failures of aircraft air conditioning or the distance between cracks along a girder. It measures the gap between events of a Poisson process.",
+      "class": ""
+    },
+    {
+      "type": "formulablock",
+      "name": "Exponential: X ~ Exp(λ)",
+      "eqs": [
+        "f(x) = \\lambda e^{-\\lambda x} \\qquad F(x) = 1 - e^{-\\lambda x}",
+        "\\text{mean} = \\frac{1}{\\lambda} \\qquad \\text{variance} = \\frac{1}{\\lambda^{2}}"
+      ],
+      "vars": [
+        {
+          "symbol": "λ",
+          "desc": "1 divided by the average gap (the rate), so mean gap = 1/λ"
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "label": "Worked example: gaps between fractures",
+      "q": "A 10 m girder has an average of 5 fractures, which splits it into 6 gaps. What is the probability a gap is 0.8 m or less?",
+      "steps": [
+        "Mean gap = 10/6 = 1.67 m, so &lambda; = 1/1.67 = 0.6",
+        "F(0.8) = 1 &minus; e<sup>&minus;0.6 &times; 0.8</sup>"
+      ],
+      "answer": "0.3812"
+    },
+    {
+      "type": "raw",
+      "html": "<h3 id=\"cs-normal\" style=\"scroll-margin-top:90px;color:#8855f5\">Normal <span style=\"font-weight:400;color:var(--text-2);font-size:0.8em\">X ~ N(μ, σ) &middot; measuring</span></h3>"
+    },
+    {
+      "type": "p",
+      "text": "Think of the weights of concrete blocks off a production line, or soil compressibility readings. Most values sit near the average and thin out equally on both sides in a bell shape. The CDF has no simple formula, so you convert to a standard normal Z and read a table.",
+      "class": ""
+    },
+    {
+      "type": "formulablock",
+      "name": "Standardising a normal variable",
+      "eqs": [
+        "Z = \\frac{X - \\mu}{\\sigma} \\qquad Z \\sim N(0, 1)"
+      ],
+      "vars": [
+        {
+          "symbol": "μ",
+          "desc": "mean"
+        },
+        {
+          "symbol": "σ",
+          "desc": "standard deviation"
+        }
+      ]
+    },
+    {
+      "type": "raw",
+      "html": "<div class=\"table-wrap\"><table><thead><tr><th>Interval</th><th>Share of the data</th></tr></thead><tbody><tr><td>&mu; &plusmn; 1&sigma;</td><td>about 68%</td></tr><tr><td>&mu; &plusmn; 2&sigma;</td><td>about 95%</td></tr><tr><td>&mu; &plusmn; 3&sigma;</td><td>about 99.7%</td></tr></tbody></table></div>"
+    },
+    {
+      "type": "conceptbox",
+      "variant": "",
+      "title": "The z-table method in 4 steps",
+      "html": "<ol><li>Write X ~ N(&mu;, &sigma;) and what probability you need.</li><li>Convert each x to z = (x &minus; &mu;) / &sigma;, to 2 decimal places.</li><li>Look up F(z) in the negative-z or positive-z table.</li><li>Combine: P(X &le; x) = F(z), P(a &le; X &le; b) = F(z<sub>2</sub>) &minus; F(z<sub>1</sub>), P(X &gt; x) = 1 &minus; F(z). The curve is symmetric, so F(&minus;z) = 1 &minus; F(z).</li></ol>"
+    },
+    {
+      "type": "example",
+      "label": "Worked example: concrete blocks",
+      "q": "Block weights X ~ N(11, 0.3) kg. What percentage weigh 10.5 kg or less, and what percentage weigh between 10.5 kg and 11.5 kg?",
+      "steps": [
+        "z = (10.5 &minus; 11)/0.3 = &minus;1.67, and the table gives F(&minus;1.67) = 0.0475",
+        "Between: z runs from &minus;1.67 to +1.67, so 0.9525 &minus; 0.0475"
+      ],
+      "answer": "4.75% weigh 10.5 kg or less, and 90.5% fall between 10.5 kg and 11.5 kg. The slide prints 4.57% for the first answer, which is a typo."
+    },
+    {
+      "type": "raw",
+      "html": "<h3 id=\"cs-weibull\" style=\"scroll-margin-top:90px;color:#8855f5\">Weibull <span style=\"font-weight:400;color:var(--text-2);font-size:0.8em\">X ~ W(λ, β) &middot; measuring</span></h3>"
+    },
+    {
+      "type": "p",
+      "text": "Think of how long a boiler component lasts, how many miles until brake pads wear out or the worst flood in 100 years. The shape changes with &beta;, which makes it flexible for lifetimes and extreme events. You need to recognise it. The slides give no Weibull calculations.",
+      "class": ""
+    },
+    {
+      "type": "formulablock",
+      "name": "Weibull: X ~ W(λ, β)",
+      "eqs": [
+        "f(x) = \\beta\\lambda^{\\beta}\\,x^{\\beta-1}e^{-(\\lambda x)^{\\beta}}"
+      ],
+      "vars": [
+        {
+          "symbol": "λ",
+          "desc": "scale parameter"
+        },
+        {
+          "symbol": "β",
+          "desc": "shape parameter. β = 1 gives the exponential distribution"
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "id": "cs-basics",
+      "text": "Step 4: PMF, PDF and CDF in one table"
+    },
+    {
+      "type": "raw",
+      "html": "<div class=\"table-wrap\"><table><thead><tr><th></th><th>Discrete (counts)</th><th>Continuous (measurements)</th></tr></thead><tbody><tr><td>Example</td><td>Flaws in 1 inch of wire</td><td>Battery life in hours</td></tr><tr><td>Probability function</td><td>PMF: p(x) = P(X = x)</td><td>PDF: f(x), probability is the area under it</td></tr><tr><td>Cumulative function</td><td>F(x) = P(X &le; x), a running total</td><td>F(x) = P(X &le; x), the area so far</td></tr><tr><td>Exactly one value</td><td>P(X = x) can be above 0</td><td>P(X = x) is always 0</td></tr><tr><td>An interval</td><td>Add the PMF values</td><td>P(a &le; X &le; b) = F(b) &minus; F(a)</td></tr><tr><td>Mean</td><td>&Sigma; x &middot; P(X = x)</td><td>&int; x &middot; f(x) dx</td></tr></tbody></table></div>"
+    },
+    {
+      "type": "p",
+      "text": "Lower case <em>f</em> is the PDF, upper case <em>F</em> is the CDF, and the PDF is the derivative of the CDF. Binomial and Poisson are discrete. Uniform, Exponential, Normal and Weibull are continuous.",
+      "class": ""
+    },
+    {
+      "type": "h2",
+      "id": "cs-rules",
+      "text": "Step 5: Probability rules"
+    },
+    {
+      "type": "raw",
+      "html": "<div class=\"table-wrap\"><table><thead><tr><th>Rule</th><th>Formula</th><th>Use it when</th></tr></thead><tbody><tr><td>Complement</td><td>P(A) = 1 &minus; P(not A)</td><td>&ldquo;At least one&rdquo; questions</td></tr><tr><td>Addition</td><td>P(A or C) = P(A) + P(C) &minus; P(A and C)</td><td>Any two events. If they cannot both happen, drop the last term</td></tr><tr><td>Conditional</td><td>P(A | C) = P(A and C) / P(C)</td><td>You already know C happened</td></tr><tr><td>Product</td><td>P(A and C) = P(A | C) &middot; P(C)</td><td>Any two events. If independent: P(A) &middot; P(C)</td></tr><tr><td>Bayes</td><td>P(A | C) = P(A) &middot; P(C | A) / P(C)</td><td>You know P(C | A) but need P(A | C)</td></tr></tbody></table></div>"
+    },
+    {
+      "type": "raw",
+      "html": "<div class=\"table-wrap\"><table><thead><tr><th>System</th><th>Fails when</th><th>Rule (independent parts)</th><th>Slide example</th></tr></thead><tbody><tr><td>Series</td><td>ANY part fails</td><td>P(B1) + P(B2) &minus; P(B1)P(B2)</td><td>Two welds at 0.01 each: 0.0199</td></tr><tr><td>Parallel</td><td>ALL parts fail</td><td>P(B1) &middot; P(B2) &middot; P(B3)</td><td>Three valves at 0.15 each: 0.003375</td></tr></tbody></table></div>"
+    },
+    {
+      "type": "h2",
+      "id": "cs-unit3",
+      "text": "Step 6: Unit 3 tools, plots and the sign test"
+    },
+    {
+      "type": "cardgrid",
+      "cards": [
+        {
+          "title": "Probability plot (QQ plot)",
+          "color": "#8855f5",
+          "text": "Does my sample look Normal (or another distribution)? Plot the sample's empirical CDF against the theoretical one. Points close to a straight line mean a good fit. Example: 44 soil compressibility samples."
+        },
+        {
+          "title": "Sign test",
+          "color": "#3b82e8",
+          "text": "Is the median equal to a value m0, with no distribution assumed? Also works on before-and-after differences. Good for small samples."
+        }
+      ]
+    },
+    {
+      "type": "conceptbox",
+      "variant": "",
+      "title": "Sign test in 5 steps",
+      "html": "<ol><li>H<sub>0</sub>: median = m<sub>0</sub>. H<sub>A</sub>: median &ne; m<sub>0</sub> (two-sided). Significance level 0.05.</li><li>Work out X<sub>i</sub> &minus; m<sub>0</sub> for every value. Drop any that equal m<sub>0</sub>.</li><li>Count positives S+ and negatives S&minus;. Under H<sub>0</sub> each is Bin(n, 0.5).</li><li>S = min(S+, S&minus;). Two-sided p-value = 2 &times; P(X &le; S).</li><li>p &le; 0.05: reject H<sub>0</sub>. p &gt; 0.05: fail to reject H<sub>0</sub> (never &ldquo;accept&rdquo;).</li></ol>"
+    },
+    {
+      "type": "example",
+      "label": "Worked example: water pick-up",
+      "q": "15 measurements. Can the median be 65%? Two values are above 65 and thirteen below.",
+      "steps": [
+        "S+ = 2, S&minus; = 13, so S = 2",
+        "p = 2 &times; P(X &le; 2) with X ~ Bin(15, 0.5)"
+      ],
+      "answer": "p = 0.0074, which is below 0.05, so reject H<sub>0</sub>. A median of 65% is not plausible."
+    },
+    {
+      "type": "h2",
+      "id": "cs-matlab",
+      "text": "Step 7: MATLAB commands"
+    },
+    {
+      "type": "p",
+      "text": "Commands without an asterisk are shown on the lecture slides. Those marked * are standard Statistics Toolbox functions that are not on the slides, so check them against your lab notes.",
+      "class": ""
+    },
+    {
+      "type": "raw",
+      "html": "<div class=\"table-wrap\"><table><thead><tr><th>Task</th><th>Command</th></tr></thead><tbody><tr><td>Binomial P(X = x) and P(X &le; x)</td><td><code>binopdf(x, n, p)</code>, <code>binocdf(x, n, p)</code></td></tr><tr><td>Uniform density and CDF</td><td><code>unifpdf(x, a, b)</code>, <code>unifcdf(x, a, b)</code></td></tr><tr><td>Poisson *</td><td><code>poisspdf(x, lambda)</code>, <code>poisscdf(x, lambda)</code></td></tr><tr><td>Normal CDF *</td><td><code>normcdf(x, mu, sigma)</code></td></tr><tr><td>Exponential CDF *</td><td><code>expcdf(x, mu)</code> where mu is the MEAN gap (1/&lambda;), not &lambda;</td></tr><tr><td>Empirical CDF plot</td><td><code>cdfplot(data)</code></td></tr><tr><td>Sign test, one sample</td><td><code>[p, h] = signtest(x, m0)</code></td></tr><tr><td>Sign test, two samples</td><td><code>[p, h] = signtest(x, y)</code></td></tr><tr><td>One-sided sign test</td><td>add <code>'tail','right'</code> for H<sub>A</sub>: median &gt; m0, <code>'left'</code> for &lt; m0</td></tr></tbody></table></div>"
+    },
+    {
+      "type": "conceptbox",
+      "variant": "note",
+      "title": "Reading signtest output",
+      "html": "<p><code>p</code> is the p-value. <code>h = 1</code> means reject H<sub>0</sub> at the 5% level, <code>h = 0</code> means fail to reject.</p>"
+    },
+    {
+      "type": "h2",
+      "id": "cs-slips",
+      "text": "Step 8: Ten slips that cost marks"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Write X ~ Bin(6, 0.25) or X ~ Po(5) <strong>before</strong> calculating. Declaring the distribution earns its own mark.",
+        "&ldquo;At least one&rdquo; means 1 &minus; P(none).",
+        "P(A and C) = P(A)P(C) only holds for <strong>independent</strong> events.",
+        "If the window changes, rescale Poisson &lambda;. Two images means Po(10), not Po(5).",
+        "Poisson &lambda; is a count per window. Exponential &lambda; is 1 / mean gap.",
+        "Standard deviation is the square root of the variance (Poisson: &radic;&lambda;).",
+        "For continuous variables P(X = x) = 0, so always use an interval and F(b) &minus; F(a).",
+        "Lower case f is the PDF, upper case F is the CDF.",
+        "z-table: convert to z first, pick the right (negative or positive) table, and sanity check with F(&minus;z) = 1 &minus; F(z).",
+        "Sign test: drop values equal to m0, take S = min(S+, S&minus;), double the tail for two-sided, and say &ldquo;fail to reject&rdquo;, never &ldquo;accept&rdquo;."
+      ]
+    },
+    {
+      "type": "raw",
+      "html": "</div></section>"
+    }
+  ],
   "formulaSheet": [
     {
       "heading": "U1 — Data & Descriptive Statistics",
@@ -1680,7 +2045,7 @@ window.SITE_CONTENT = {
           "type": "formulablock",
           "name": "Weibull: X ~ W(λ, β)",
           "eqs": [
-            "f(x) = \\lambda\\beta\\,x^{\\beta-1}e^{-\\lambda x^{\\beta}}"
+            "f(x) = \\beta\\lambda^{\\beta}\\,x^{\\beta-1}e^{-(\\lambda x)^{\\beta}}"
           ],
           "vars": [
             {
